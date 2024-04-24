@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Gestion_de_turnos_la_misericordia.Models;
+using misericordia.Models;
 
-namespace Gestion_de_turnos_la_misericordia.Controllers;
+namespace misericordia.Controllers;
 
 public class HomeController : Controller
 {

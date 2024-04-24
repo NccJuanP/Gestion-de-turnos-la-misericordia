@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RmQ+1phVu+RyZ6eNmnsjuBJdjhnTNrJkuE/OTjCc9/XBFMZZq8ofTWxqp8Ty9BMfjjOSE7IA/aBXTPs1bLsvzw==",
+  "dgSpecHash": "3uX45JWv3LDtrQNoFee0OgMQN3pQ3ogtTArN/8Vb7mI0DE8+xEvSWuLPCqpC7WpkBlZys7nzRTOd6EeVYETBDQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Luz Enith Zuluaga D\\Desktop\\Proyecto_Gestion_Turnos_LaMisericordia\\Gestion-de-turnos-la-misericordia\\Gestion-de-turnos-la-misericordia.csproj",
+  "projectFilePath": "C:\\Users\\Luz Enith Zuluaga D\\Desktop\\primer proyecto linux\\Gestion-de-turnos-la-misericordia\\Gestion-de-turnos-la-misericordia.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Luz Enith Zuluaga D\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.4\\microsoft.entityframeworkcore.8.0.4.nupkg.sha512",
     "C:\\Users\\Luz Enith Zuluaga D\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.4\\microsoft.entityframeworkcore.abstractions.8.0.4.nupkg.sha512",

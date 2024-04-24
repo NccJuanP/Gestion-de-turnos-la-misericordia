@@ -724,11 +724,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Luz Enith Zuluaga D\\Desktop\\Proyecto_Gestion_Turnos_LaMisericordia\\Gestion-de-turnos-la-misericordia\\Gestion-de-turnos-la-misericordia.csproj",
+      "projectUniqueName": "C:\\Users\\Luz Enith Zuluaga D\\Desktop\\primer proyecto linux\\Gestion-de-turnos-la-misericordia\\Gestion-de-turnos-la-misericordia.csproj",
       "projectName": "Gestion-de-turnos-la-misericordia",
-      "projectPath": "C:\\Users\\Luz Enith Zuluaga D\\Desktop\\Proyecto_Gestion_Turnos_LaMisericordia\\Gestion-de-turnos-la-misericordia\\Gestion-de-turnos-la-misericordia.csproj",
+      "projectPath": "C:\\Users\\Luz Enith Zuluaga D\\Desktop\\primer proyecto linux\\Gestion-de-turnos-la-misericordia\\Gestion-de-turnos-la-misericordia.csproj",
       "packagesPath": "C:\\Users\\Luz Enith Zuluaga D\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Luz Enith Zuluaga D\\Desktop\\Proyecto_Gestion_Turnos_LaMisericordia\\Gestion-de-turnos-la-misericordia\\obj\\",
+      "outputPath": "C:\\Users\\Luz Enith Zuluaga D\\Desktop\\primer proyecto linux\\Gestion-de-turnos-la-misericordia\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Luz Enith Zuluaga D\\AppData\\Roaming\\NuGet\\NuGet.Config"
