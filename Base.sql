@@ -1,23 +1,41 @@
+-- Active: 1713910552041@@baquazvjeajolsh8tvxo-mysql.services.clever-cloud.com@3306@baquazvjeajolsh8tvxo
+
+-- Crear la tabla DocumentTypes
 CREATE TABLE DocumentTypes (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     type VARCHAR(45) UNIQUE
 );
 
+-- Insertar datos en DocumentTypes
 INSERT INTO DocumentTypes (type) VALUES 
 ('Cedula'),
 ('Tarjeta de identidad'),
 ('Cedula de extranjeria'),
 ('Documento de afiliacion');
 
+-- Crear la tabla EndingAttentions
 CREATE TABLE EndingAttentions (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Finished VARCHAR(45) UNIQUE
 );
 
+-- Insertar datos en EndingAttentions
 INSERT INTO EndingAttentions (Finished) VALUES 
 ('Usuario no atendido'),
 ('Usuario atendido');
 
+-- Crear la tabla AttentionPreferences
+CREATE TABLE AttentionPreferences (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Preference VARCHAR(45) UNIQUE
+);
+
+-- Insertar datos en AttentionPreferences
+INSERT INTO AttentionPreferences (Preference) VALUES 
+('Si'),
+('No');
+
+-- Crear la tabla Users
 CREATE TABLE Users (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     DocumentType INT,
@@ -29,6 +47,7 @@ CREATE TABLE Users (
     FOREIGN KEY (DocumentType) REFERENCES DocumentTypes(Id)
 );
 
+-- Crear la tabla Employees
 CREATE TABLE Employees (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     DocumentType INT,
@@ -37,11 +56,15 @@ CREATE TABLE Employees (
     Lastname VARCHAR(45),
     Email VARCHAR(150),
     Phone VARCHAR(45),
+    Password VARCHAR(45),
     FOREIGN KEY (DocumentType) REFERENCES DocumentTypes(Id)
 );
 
+-- Crear la tabla Attentions
 CREATE TABLE Attentions (
     Id INT PRIMARY KEY AUTO_INCREMENT,
+    AttentionPreference INT,
+    NumAttention VARCHAR(20),
     UserId INT,
     EmployeeId INT,
     EndingAttention INT,
@@ -50,7 +73,7 @@ CREATE TABLE Attentions (
     FOREIGN KEY (EmployeeId) REFERENCES Employees(Id)
 );
 
-
+-- Insertar datos en Employees
 INSERT INTO Employees (DocumentType, DocumentNumber, Firstname, Lastname, Email, Phone) VALUES 
 (1, 10001, 'John', 'Doe', 'john.doe@example.com', '1234567890'),
 (2, 10002, 'Jane', 'Smith', 'jane.smith@example.com', '2345678901'),
@@ -58,7 +81,7 @@ INSERT INTO Employees (DocumentType, DocumentNumber, Firstname, Lastname, Email,
 (1, 10004, 'Emily', 'Brown', 'emily.brown@example.com', '4567890123'),
 (2, 10005, 'Daniel', 'Martinez', 'daniel.martinez@example.com', '5678901234');
 
-
+-- Insertar datos en Users
 INSERT INTO Users (DocumentType, DocumentNumber, Firstname, Lastname, Email, Phone) VALUES 
 (1, 20001, 'Alice', 'Johnson', 'alice.johnson@example.com', '6789012345'),
 (2, 20002, 'Robert', 'Williams', 'robert.williams@example.com', '7890123456'),
