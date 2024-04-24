@@ -36,3 +36,41 @@
 /home/riwip5-025/Documents/juan pablo/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/Gestion-de-turnos-la-misericordia.pdb
 /home/riwip5-025/Documents/juan pablo/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/Gestion-de-turnos-la-misericordia.genruntimeconfig.cache
 /home/riwip5-025/Documents/juan pablo/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/ref/Gestion-de-turnos-la-misericordia.dll
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/bin/Debug/net8.0/appsettings.Development.json
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/bin/Debug/net8.0/appsettings.json
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/bin/Debug/net8.0/Gestion-de-turnos-la-misericordia.staticwebassets.runtime.json
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/bin/Debug/net8.0/Gestion-de-turnos-la-misericordia
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/bin/Debug/net8.0/Gestion-de-turnos-la-misericordia.deps.json
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/bin/Debug/net8.0/Gestion-de-turnos-la-misericordia.runtimeconfig.json
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/bin/Debug/net8.0/Gestion-de-turnos-la-misericordia.dll
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/bin/Debug/net8.0/Gestion-de-turnos-la-misericordia.pdb
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/bin/Debug/net8.0/MySqlConnector.dll
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/bin/Debug/net8.0/Pomelo.EntityFrameworkCore.MySql.dll
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/Gestion-de-turnos-la-misericordia.csproj.AssemblyReference.cache
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/Gestion-de-turnos-la-misericordia.GeneratedMSBuildEditorConfig.editorconfig
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/Gestion-de-turnos-la-misericordia.AssemblyInfoInputs.cache
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/Gestion-de-turnos-la-misericordia.AssemblyInfo.cs
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/Gestion-de-turnos-la-misericordia.csproj.CoreCompileInputs.cache
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/Gestion-de-turnos-la-misericordia.MvcApplicationPartsAssemblyInfo.cache
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/Gestion-de-turnos-la-misericordia.RazorAssemblyInfo.cache
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/Gestion-de-turnos-la-misericordia.RazorAssemblyInfo.cs
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/Gestion-de-turnos-la-misericordia.sourcelink.json
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/staticwebassets.build.json
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/staticwebassets.development.json
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/staticwebassets/msbuild.Gestion-de-turnos-la-misericordia.Microsoft.AspNetCore.StaticWebAssets.props
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/staticwebassets/msbuild.build.Gestion-de-turnos-la-misericordia.props
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.Gestion-de-turnos-la-misericordia.props
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Gestion-de-turnos-la-misericordia.props
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/staticwebassets.pack.json
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/scopedcss/bundle/Gestion-de-turnos-la-misericordia.styles.css
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/scopedcss/projectbundle/Gestion-de-turnos-la-misericordia.bundle.scp.css
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/Gestion-de-turnos-la-misericordia.csproj.CopyComplete
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/Gestion-de-turnos-la-misericordia.dll
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/refint/Gestion-de-turnos-la-misericordia.dll
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/Gestion-de-turnos-la-misericordia.pdb
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/Gestion-de-turnos-la-misericordia.genruntimeconfig.cache
+/home/riwip5-018/Documents/juan pablo/c#/proyecto hospital/Gestion-de-turnos-la-misericordia/obj/Debug/net8.0/ref/Gestion-de-turnos-la-misericordia.dll

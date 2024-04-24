@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Gestion-de-turnos-la-misericordia")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f6199bc9c3b3d9346c122cf7abfe051275c8c53")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cdd5e21e39fa64e38ab9d0da0212cb27229edace")]
 [assembly: System.Reflection.AssemblyProductAttribute("Gestion-de-turnos-la-misericordia")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Gestion-de-turnos-la-misericordia")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

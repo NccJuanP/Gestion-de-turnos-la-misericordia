@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Misericordia.Data;
 
 namespace Misericordia.Controllers{
-    public class MisericordiaController : Controller{
+    public class RecepcionController : Controller{
         readonly MisericordiaContext _context;
 
-        public MisericordiaController(MisericordiaContext context){
+        public RecepcionController(MisericordiaContext context){
             _context = context;
         }
 
