@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using misericordia.Models;
+using Misericordia.Models;
 
 namespace misericordia.Controllers;
 

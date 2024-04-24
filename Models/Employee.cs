@@ -1,4 +1,4 @@
-namespace misericordia.Models
+namespace Misericordia.Models
 {
     public class Employee
     {
