@@ -719,24 +719,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Luz Enith Zuluaga D\\.nuget\\packages\\": {}
+    "C:\\Users\\Administrador\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Luz Enith Zuluaga D\\Desktop\\Proyecto_Gestion_Turnos_LaMisericordia\\Gestion-de-turnos-la-misericordia\\Gestion-de-turnos-la-misericordia.csproj",
+      "projectUniqueName": "C:\\Users\\Administrador\\Documents\\pablo\\Gestion-de-turnos-la-misericordia\\Gestion-de-turnos-la-misericordia.csproj",
       "projectName": "Gestion-de-turnos-la-misericordia",
-      "projectPath": "C:\\Users\\Luz Enith Zuluaga D\\Desktop\\Proyecto_Gestion_Turnos_LaMisericordia\\Gestion-de-turnos-la-misericordia\\Gestion-de-turnos-la-misericordia.csproj",
-      "packagesPath": "C:\\Users\\Luz Enith Zuluaga D\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Luz Enith Zuluaga D\\Desktop\\Proyecto_Gestion_Turnos_LaMisericordia\\Gestion-de-turnos-la-misericordia\\obj\\",
+      "projectPath": "C:\\Users\\Administrador\\Documents\\pablo\\Gestion-de-turnos-la-misericordia\\Gestion-de-turnos-la-misericordia.csproj",
+      "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Administrador\\Documents\\pablo\\Gestion-de-turnos-la-misericordia\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Luz Enith Zuluaga D\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -749,11 +751,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -788,7 +785,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
