@@ -34,6 +34,9 @@ namespace Misericordia.Controllers{
             return View();
         }
 
+        public IActionResult GestionUsuario(){
+            return View();
+        }
 
     }
 }
