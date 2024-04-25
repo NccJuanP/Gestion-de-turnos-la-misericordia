@@ -9,5 +9,6 @@ namespace Misericordia.Data
         public DbSet <Employee>Employees { get; set; }
         public DbSet <User>Users { get; set; }
         public DbSet <Attention> Attentions { get; set; }
+        public DbSet <DocumentType> DocumentTypes { get; set; }
     }
 }

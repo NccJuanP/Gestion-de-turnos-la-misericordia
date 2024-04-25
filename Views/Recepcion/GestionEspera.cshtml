@@ -1,5 +1,6 @@
 @using System.Text.RegularExpressions
 @*Modal de confirmar borrar*@
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -75,7 +76,49 @@
     </thead>
     <tbody>
         @foreach (var item in Model){
-            <p>hola</p>
+            if(item.preferencias == 1){
+            TimeSpan diferencia = DateTime.Now - item.entrada;
+            int minutos = (int) diferencia.TotalMinutes;
+            string clase = "";
+            Regex regex= new Regex("([A-Z]).");
+            string varia = regex.Match(item.solicitud).ToString();
+            switch (varia){
+                case "GC":
+                    clase = "table-primary";
+                    break;
+
+                case "PF":
+                clase = "table-success";
+                break;
+
+                case "IG":
+                    clase = "table-danger";
+                    break;
+
+                case "AM":
+                clase = "table-warning";
+                break;
+            }
+            <tr class="@clase">
+                <th scope="row"><p>preferencial</p> @item.solicitud</th>
+                <td>@minutos MIN</td>
+                <td>@item.nombreCompleto</td>
+                <td>@item.tipoDocumento @item.numeroDocumento</td>
+                <td>
+                <button type="button" class="btn btn-primary"  data-bs-toggle="modal"
+                    data-bs-target="#exampleModal2">Llamar</button>
+                <button type="button" class="btn btn-success">Pasar</button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Borrar</button>
+            </td>
+            </tr>
+            }
+        }
+
+        @foreach (var item in Model){
+            if(item.preferencias == 2){
+            TimeSpan diferencia = DateTime.Now - item.entrada;
+            int minutos = (int) diferencia.TotalMinutes;
             string clase = "";
             Regex regex= new Regex("([A-Z]).");
             string varia = regex.Match(item.solicitud).ToString();
@@ -98,162 +141,18 @@
             }
             <tr class="@clase">
                 <th scope="row">@item.solicitud</th>
-                <td>@item</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        }
-        <tr class="table-primary">
-            <th scope="row">GC-100</th>
-            <td>5 MIN</td>
-            <td>Pepito Perez</td>
-            <td>CC 100877631</td>
-            <td>
+                <td>@minutos MIN</td>
+                <td>@item.nombreCompleto</td>
+                <td>@item.tipoDocumento @item.numeroDocumento</td>
+                <td>
                 <button type="button" class="btn btn-primary"  data-bs-toggle="modal"
                     data-bs-target="#exampleModal2">Llamar</button>
                 <button type="button" class="btn btn-success">Pasar</button>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">Borrar</button>
             </td>
-        </tr>
-        <tr class="table-success">
-            <th scope="row">PF-500</th>
-            <td>21 MIN</td>
-            <td>Carlos Sanchez</td>
-            <td>CC 5667817</td>
-            <td>
-                <button type="button" class="btn btn-primary">Llamar</button>
-                <button type="button" class="btn btn-success">Pasar</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Borrar</button>
-            </td>
-        </tr>
-
-
-        <tr class="table-primary">
-            <th scope="row">GC-400</th>
-            <td>29 MIN</td>
-            <td>Ana Martinez</td>
-            <td>CC 6784141</td>
-            <td>
-                <button type="button" class="btn btn-primary">Llamar</button>
-                <button type="button" class="btn btn-success">Pasar</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Borrar</button>
-            </td>
-        </tr>
-
-
-        <tr class="table-primary">
-            <th scope="row">GC-200</th>
-            <td>13 MIN</td>
-            <td>Carlos Sanchez</td>
-            <td>CC 2517839</td>
-            <td>
-                <button type="button" class="btn btn-primary">Llamar</button>
-                <button type="button" class="btn btn-success">Pasar</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Borrar</button>
-            </td>
-        </tr>
-
-
-        <tr class="table-danger">
-            <th scope="row">IG-200</th>
-            <td>24 MIN</td>
-            <td>Carlos Sanchez</td>
-            <td>CC 7295942</td>
-            <td>
-                <button type="button" class="btn btn-primary">Llamar</button>
-                <button type="button" class="btn btn-success">Pasar</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Borrar</button>
-            </td>
-        </tr>
-
-
-        <tr class="table-primary">
-            <th scope="row">GC-100</th>
-            <td>2 MIN</td>
-            <td>Luis Hernandez</td>
-            <td>CC 4859419</td>
-            <td>
-                <button type="button" class="btn btn-primary">Llamar</button>
-                <button type="button" class="btn btn-success">Pasar</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Borrar</button>
-            </td>
-        </tr>
-
-
-        <tr class="table-warning">
-            <th scope="row">AM-200</th>
-            <td>10 MIN</td>
-            <td>Ana Martinez</td>
-            <td>CC 3969275</td>
-            <td>
-                <button type="button" class="btn btn-primary">Llamar</button>
-                <button type="button" class="btn btn-success">Pasar</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Borrar</button>
-            </td>
-        </tr>
-
-
-        <tr class="table-primary">
-            <th scope="row">GC-100</th>
-            <td>41 MIN</td>
-            <td>Maria Garcia</td>
-            <td>CC 8253593</td>
-            <td>
-                <button type="button" class="btn btn-primary">Llamar</button>
-                <button type="button" class="btn btn-success">Pasar</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Borrar</button>
-            </td>
-        </tr>
-
-
-        <tr class="table-success">
-            <th scope="row">PF-400</th>
-            <td>16 MIN</td>
-            <td>Juan Rodriguez</td>
-            <td>CC 3930145</td>
-            <td>
-                <button type="button" class="btn btn-primary">Llamar</button>
-                <button type="button" class="btn btn-success">Pasar</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Borrar</button>
-            </td>
-        </tr>
-
-
-        <tr class="table-danger">
-            <th scope="row">IG-200</th>
-            <td>36 MIN</td>
-            <td>Pepito Perez</td>
-            <td>CC 4336049</td>
-            <td>
-                <button type="button" class="btn btn-primary">Llamar</button>
-                <button type="button" class="btn btn-success">Pasar</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Borrar</button>
-            </td>
-        </tr>
-
-
-        <tr class="table-warning">
-            <th scope="row">AM-200</th>
-            <td>53 MIN</td>
-            <td>Juan Rodriguez</td>
-            <td>CC 8680081</td>
-            <td>
-                <button type="button" class="btn btn-primary">Llamar</button>
-                <button type="button" class="btn btn-success">Pasar</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Borrar</button>
-            </td>
-        </tr>
+            </tr>
+            }
+        }
     </tbody>
 </table>
