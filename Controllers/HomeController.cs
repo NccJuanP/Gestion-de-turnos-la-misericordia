@@ -13,8 +13,12 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(string valor)
     {
+
+        /* HttpContext.Session.SetString("userSend",valor);
+       string variable =  HttpContext.Session.GetString("userSend"); */
+
         return View();
     }
 

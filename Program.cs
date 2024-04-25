@@ -12,6 +12,12 @@ builder.Services.AddDbContext<MisericordiaContext>(options =>
         builder.Configuration.GetConnectionString("Connection"),
         Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.20-mysql")));
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options => {
+    options.IdleTimeout = TimeSpan.FromSeconds(10000);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+    });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,6 +34,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
