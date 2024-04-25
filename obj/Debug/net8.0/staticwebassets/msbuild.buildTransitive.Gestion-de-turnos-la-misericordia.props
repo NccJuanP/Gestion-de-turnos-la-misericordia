@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\Gestion-de-turnos-la-misericordia.props" />
-</Project>
