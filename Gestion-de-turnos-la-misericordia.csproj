@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Gestion_de_turnos_la_misericordia</RootNamespace>
+    <RootNamespace>Misericordia</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
