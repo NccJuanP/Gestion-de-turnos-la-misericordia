@@ -1,4 +1,10 @@
--- Active: 1713910552041@@baquazvjeajolsh8tvxo-mysql.services.clever-cloud.com@3306@baquazvjeajolsh8tvxo
+-- Active: 1714045345132@@baquazvjeajolsh8tvxo-mysql.services.clever-cloud.com@3306@baquazvjeajolsh8tvxo
+
+SHOW DATABASES;
+USE baquazvjeajolsh8tvxo;
+SHOW TABLES;
+SELECT * FROM Attentions;
+
 
 -- Crear la tabla DocumentTypes
 CREATE TABLE DocumentTypes (

@@ -1,3 +1,4 @@
+@using System.Text.RegularExpressions
 @*Modal de confirmar borrar*@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -62,7 +63,7 @@
 </div>
 
 @*tabla de los usuarios*@
-<table class="table">primary
+<table class="table">
     <thead>
         <tr>
             <th scope="col">Tipo de solitud</th>
@@ -73,6 +74,36 @@
         </tr>
     </thead>
     <tbody>
+        @foreach (var item in Model){
+            <p>hola</p>
+            string clase = "";
+            Regex regex= new Regex("([A-Z]).");
+            string varia = regex.Match(item.solicitud).ToString();
+            switch (varia){
+                case "GC":
+                    clase = "table-primary";
+                    break;
+
+                case "PF":
+                clase = "table-success";
+                break;
+
+                case "IG":
+                    clase = "table-danger";
+                    break;
+
+                case "AM":
+                clase = "table-warning";
+                break;
+            }
+            <tr class="@clase">
+                <th scope="row">@item.solicitud</th>
+                <td>@item</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
         <tr class="table-primary">
             <th scope="row">GC-100</th>
             <td>5 MIN</td>

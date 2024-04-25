@@ -6,6 +6,7 @@ namespace Misericordia.Models{
         public int EndingAttention { get; set; }
         public int UserId { get; set; }
         public int EmployeeId { get; set; }
-        public DateTime DateAttention { get; set; }
+        public DateTime DateAttentionExit { get; set; }
+        public DateTime DateAttentionEnter { get; set; }
     }
 }
