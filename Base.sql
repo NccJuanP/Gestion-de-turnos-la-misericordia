@@ -68,10 +68,12 @@ CREATE TABLE Attentions (
     UserId INT,
     EmployeeId INT,
     EndingAttention INT,
-    DateAttention DATETIME,
+    DateAttentionExit DATETIME,
+    DateAttentionEnter DATETIME,
     FOREIGN KEY (UserId) REFERENCES Users(Id),
     FOREIGN KEY (EmployeeId) REFERENCES Employees(Id)
 );
+
 
 -- Insertar datos en Employees
 INSERT INTO Employees (DocumentType, DocumentNumber, Firstname, Lastname, Email, Phone) VALUES 
