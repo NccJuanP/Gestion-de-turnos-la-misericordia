@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.SignalR;
 using Misericordia.Data;
-using TuProyecto.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
