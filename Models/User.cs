@@ -1,4 +1,4 @@
-namespace Gestion_de_turnos_la_misericordia.Models
+namespace Misericordia.Models
 {
     public class User
     {

@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Gestion_de_turnos_la_misericordia.Models;
+using Misericordia.Models;
 
-namespace Gestion_de_turnos_la_misericordia.Controllers;
+namespace misericordia.Controllers;
 
 public class HomeController : Controller
 {
@@ -13,8 +13,12 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(string valor)
     {
+
+        /* HttpContext.Session.SetString("userSend",valor);
+       string variable =  HttpContext.Session.GetString("userSend"); */
+
         return View();
     }
 

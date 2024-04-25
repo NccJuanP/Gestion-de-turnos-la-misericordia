@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.SignalR;
 using Misericordia.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,15 @@ builder.Services.AddDbContext<MisericordiaContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("Connection"),
         Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.20-mysql")));
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options => {
+    options.IdleTimeout = TimeSpan.FromSeconds(10000);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+    });
+
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -28,6 +38,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
