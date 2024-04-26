@@ -35,6 +35,16 @@ namespace Misericordia.Controllers{
 
         }
 
+        public async Task <IActionResult> GestionEsperaRechazar(int userId){
+            var atention = await _context.Attentions.FindAsync(userId);
+            atention.Status = "FINALIZADO";
+            atention.EmployeeId = (int)HttpContext.Session.GetInt32("EmployeeId");
+            atention.DateAttentionExit = DateTime.Now;
+            _context.Attentions.Update(atention);
+            _context.SaveChangesAsync();
+            return RedirectToAction("GestionUsuario");
+        }
+
         public async Task <IActionResult> Index(){
             HttpContext.Session.SetInt32("EmployeeId", 1);
             return View();
