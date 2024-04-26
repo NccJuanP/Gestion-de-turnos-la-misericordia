@@ -1,3 +1,4 @@
+@using System.Text.RegularExpressions
 @*Modal de confirmar borrar*@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -35,7 +36,7 @@
 </div>
 
 @*tabla de los usuarios*@
-<table class="table">primary
+<table class="table">
     <thead>
         <tr>
             <th scope="col">Tipo de solitud</th>
@@ -46,103 +47,40 @@
         </tr>
     </thead>
     <tbody>
-        <tr class="table-primary">
-            <th scope="row">GC-100</th>
-            <td>1</td>
-            <td>Pepito Perez</td>
-            <td>CC 100877631</td>
+        @foreach(var item in Model){
+            if(item.status == "ATENDIENDO"){
+            string clase = "";
+            Regex regex= new Regex("([A-Z]).");
+            string varia = regex.Match(item.solicitud).ToString();
+            switch (varia){
+                case "GC":
+                    clase = "table-primary";
+                    break;
+
+                case "PF":
+                clase = "table-success";
+                break;
+
+                case "IG":
+                    clase = "table-danger";
+                    break;
+
+                case "AM":
+                clase = "table-warning";
+                break;
+            }
+
+        <tr class="@clase">
+            <th scope="row">@item.solicitud</th>
+            <td>@item.modulo</td>
+            <td>@item.nombreCompleto</td>
+            <td>@item.documento</td>
             <td>
                 <button type="button" class="btn btn-success" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">Finalizar</button>
             </td>
         </tr>
-        <tr class="table-success">
-            <th scope="row">PF-500</th>
-            <td>2</td>
-            <td>Carlos Sanchez</td>
-            <td>CC 5667817</td>
-            <td>
-                
-                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Finalizar</button>
-            </td>
-        </tr>
-
-
-        <tr class="table-primary">
-            <th scope="row">GC-400</th>
-            <td>3</td>
-            <td>Ana Martinez</td>
-            <td>CC 6784141</td>
-            <td>
-                
-                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Finalizar</button>
-            </td>
-        </tr>
-
-
-        <tr class="table-primary">
-            <th scope="row">GC-200</th>
-            <td>4</td>
-            <td>Carlos Sanchez</td>
-            <td>CC 2517839</td>
-            <td>
-                
-                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Finalizar</button>
-            </td>
-        </tr>
-
-
-        <tr class="table-danger">
-            <th scope="row">IG-200</th>
-            <td>5</td>
-            <td>Carlos Sanchez</td>
-            <td>CC 7295942</td>
-            <td>
-                
-                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Finalizar</button>
-            </td>
-        </tr>
-
-
-        <tr class="table-primary">
-            <th scope="row">GC-100</th>
-            <td>6</td>
-            <td>Luis Hernandez</td>
-            <td>CC 4859419</td>
-            <td>
-                
-                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Finalizar</button>
-            </td>
-        </tr>
-
-
-        <tr class="table-warning">
-            <th scope="row">AM-200</th>
-            <td>7</td>
-            <td>Ana Martinez</td>
-            <td>CC 3969275</td>
-            <td>
-                
-                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Finalizar</button>
-            </td>
-        </tr>
-
-
-        <tr class="table-primary">
-            <th scope="row">GC-100</th>
-            <td>8</td>
-            <td>Maria Garcia</td>
-            <td>CC 8253593</td>
-            <td>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Finalizar</button>
-            </td>
-        </tr>
+            }
+        }
     </tbody>
 </table>

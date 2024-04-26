@@ -8,5 +8,6 @@ namespace Misericordia.Models{
         public int EmployeeId { get; set; }
         public DateTime DateAttentionExit { get; set; }
         public DateTime DateAttentionEnter { get; set; }
+        public string Status {get; set;}
     }
 }

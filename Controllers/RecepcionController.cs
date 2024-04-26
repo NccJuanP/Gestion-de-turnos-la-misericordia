@@ -1,5 +1,7 @@
+using System.Reflection.Metadata;
 using Microsoft.AspNetCore.Mvc;
 using Misericordia.Data;
+using Misericordia.Models;
 
 namespace Misericordia.Controllers{
     public class RecepcionController : Controller{
@@ -8,34 +10,47 @@ namespace Misericordia.Controllers{
         public RecepcionController(MisericordiaContext context){
             _context = context;
         }
-        internal class claseTest{
-            public string solicitud {get; set;}
-        }
-        // En el controlador
-        public ActionResult ActualizarSegundaVista()
-        {
-            // Lógica para actualizar la segunda vista
-            return PartialView("SegundaVistaPartial", 2);
-        }
 
 
         public IActionResult GestionEspera(){
+            
             var otro = from user in _context.Users
             join atention in _context.Attentions on user.Id equals atention.UserId
             join documents in _context.DocumentTypes on user.DocumentType equals documents.Id select new {solicitud = atention.NumAttention,
             preferencias = atention.AttentionPreference, nombreCompleto = user.Firstname + " " + user.Lastname, tipoDocumento = documents.type,
-            numeroDocumento = user.DocumentNumber, entrada = atention.DateAttentionEnter};
+            numeroDocumento = user.DocumentNumber, entrada = atention.DateAttentionEnter, status = atention.Status, atentionId = atention.Id};
 
         
             return View(otro);
         }
 
+        public async Task <IActionResult> GestionEsperaPasar(int userId){
+
+            var atention = await _context.Attentions.FindAsync(userId);
+            atention.Status = "ATENDIENDO";
+            atention.EmployeeId = (int)HttpContext.Session.GetInt32("EmployeeId");
+            _context.Attentions.Update(atention);
+            _context.SaveChangesAsync();
+            return RedirectToAction("GestionUsuario");
+
+        }
+
         public async Task <IActionResult> Index(){
+            HttpContext.Session.SetInt32("EmployeeId", 1);
             return View();
         }
 
-        public IActionResult GestionUsuario(){
-            return View();
+        public async Task <IActionResult> GestionUsuario(){
+            var otro = from user in _context.Users
+            join atention in _context.Attentions on user.Id equals atention.UserId
+            join employee in _context.Employees on atention.EmployeeId equals employee.Id
+            join documents in _context.DocumentTypes on user.DocumentType equals documents.Id
+            select new {solicitud = atention.NumAttention, modulo = employee.Modulo,
+            nombreCompleto = user.Firstname + " " + user.Lastname, documento = documents.type + " " + user.DocumentNumber,
+            atentionId = atention.Id, status = atention.Status};
+
+        
+            return View(otro);
         }
 
     }

@@ -1,10 +1,4 @@
--- Active: 1714045345132@@baquazvjeajolsh8tvxo-mysql.services.clever-cloud.com@3306@baquazvjeajolsh8tvxo
-
-SHOW DATABASES;
-USE baquazvjeajolsh8tvxo;
-SHOW TABLES;
-SELECT * FROM Attentions;
-
+-- Active: 1713910552041@@baquazvjeajolsh8tvxo-mysql.services.clever-cloud.com@3306@baquazvjeajolsh8tvxo
 
 -- Crear la tabla DocumentTypes
 CREATE TABLE DocumentTypes (
@@ -63,6 +57,7 @@ CREATE TABLE Employees (
     Email VARCHAR(150),
     Phone VARCHAR(45),
     Password VARCHAR(45),
+    Modulo int,
     FOREIGN KEY (DocumentType) REFERENCES DocumentTypes(Id)
 );
 
@@ -76,10 +71,16 @@ CREATE TABLE Attentions (
     EndingAttention INT,
     DateAttentionExit DATETIME,
     DateAttentionEnter DATETIME,
+    Status varchar(45),
     FOREIGN KEY (UserId) REFERENCES Users(Id),
     FOREIGN KEY (EmployeeId) REFERENCES Employees(Id)
 );
 
+-- Insertar datos en Attentions
+INSERT INTO Attentions (AttentionPreference, NumAttention, UserId, EmployeeId, EndingAttention, DateAttentionExit, DateAttentionEnter, Status) VALUES 
+(1, 'GC-100', 1, 1, 1, '2024-04-25 10:00:00', '2024-04-25 09:30:00', 'ESPERA'),
+(2, 'PF-500', 2, 2, 2, '2024-04-25 11:30:00', '2024-04-25 11:00:00', 'ATENDIENDO'),
+(1, 'IG-500', 3, 3, 1, '2024-04-25 11:30:00', '2024-04-25 11:00:00', 'FINALIZADO');
 
 -- Insertar datos en Employees
 INSERT INTO Employees (DocumentType, DocumentNumber, Firstname, Lastname, Email, Phone) VALUES 

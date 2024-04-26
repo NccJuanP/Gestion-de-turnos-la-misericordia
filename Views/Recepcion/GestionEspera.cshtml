@@ -76,7 +76,7 @@
     </thead>
     <tbody>
         @foreach (var item in Model){
-            if(item.preferencias == 1){
+            if(item.preferencias == 1 && item.status == "ESPERA"){
             TimeSpan diferencia = DateTime.Now - item.entrada;
             int minutos = (int) diferencia.TotalMinutes;
             string clase = "";
@@ -116,7 +116,7 @@
         }
 
         @foreach (var item in Model){
-            if(item.preferencias == 2){
+            if(item.preferencias == 2 && item.status == "ESPERA"){
             TimeSpan diferencia = DateTime.Now - item.entrada;
             int minutos = (int) diferencia.TotalMinutes;
             string clase = "";
@@ -147,7 +147,7 @@
                 <td>
                 <button type="button" class="btn btn-primary"  data-bs-toggle="modal"
                     data-bs-target="#exampleModal2">Llamar</button>
-                <button type="button" class="btn btn-success">Pasar</button>
+                <a asp-action="GestionEsperaPasar" asp-route-userId="@item.atentionId" class="btn btn-success">Pasar</a>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">Borrar</button>
             </td>
