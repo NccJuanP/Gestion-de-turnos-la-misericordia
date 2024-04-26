@@ -48,6 +48,7 @@ namespace Misericordia.Controllers{
             select new {solicitud = atention.NumAttention, modulo = employee.Modulo,
             nombreCompleto = user.Firstname + " " + user.Lastname, documento = documents.type + " " + user.DocumentNumber,
             atentionId = atention.Id, status = atention.Status};
+            
 
         
             return View(otro);
