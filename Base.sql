@@ -57,6 +57,7 @@ CREATE TABLE Employees (
     Email VARCHAR(150),
     Phone VARCHAR(45),
     Password VARCHAR(45),
+    Modulo int,
     FOREIGN KEY (DocumentType) REFERENCES DocumentTypes(Id)
 );
 
