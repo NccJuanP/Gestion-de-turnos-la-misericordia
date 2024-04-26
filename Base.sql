@@ -71,6 +71,7 @@ CREATE TABLE Attentions (
     EndingAttention INT,
     DateAttentionExit DATETIME,
     DateAttentionEnter DATETIME,
+    Status varchar(45),
     FOREIGN KEY (UserId) REFERENCES Users(Id),
     FOREIGN KEY (EmployeeId) REFERENCES Employees(Id)
 );
