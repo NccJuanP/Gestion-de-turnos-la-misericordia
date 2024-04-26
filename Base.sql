@@ -1,4 +1,6 @@
--- Active: 1714161874689@@baquazvjeajolsh8tvxo-mysql.services.clever-cloud.com@3306@baquazvjeajolsh8tvxo
+-- Active: 1714167488761@@baquazvjeajolsh8tvxo-mysql.services.clever-cloud.com@3306@baquazvjeajolsh8tvxo
+
+select * from Users;
 
 -- Crear la tabla DocumentTypes
 CREATE TABLE DocumentTypes (
@@ -61,7 +63,7 @@ CREATE TABLE Employees (
     FOREIGN KEY (DocumentType) REFERENCES DocumentTypes(Id)
 );
 alter table `Employees` add COLUMN Modulo int;
-select * from `Employees`;
+select * from Employees;
 
 -- Crear la tabla Attentions
 CREATE TABLE Attentions (
@@ -77,6 +79,8 @@ CREATE TABLE Attentions (
     FOREIGN KEY (UserId) REFERENCES Users(Id),
     FOREIGN KEY (EmployeeId) REFERENCES Employees(Id)
 );
+
+select * from `Attentions`;
 
 -- Insertar datos en Attentions
 INSERT INTO Attentions (AttentionPreference, NumAttention, UserId, EmployeeId, EndingAttention, DateAttentionExit, DateAttentionEnter, Status) VALUES 

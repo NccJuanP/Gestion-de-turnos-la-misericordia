@@ -18,16 +18,41 @@
                         <div class="input-group-text bg-info">
                             <img src="/img/username-icon.svg" alt="username-icon" style="height: 1rem">
                         </div>
-                        <input class="form-control bg-light" type="text" placeholder="Username" name="names">
+                        @switch(Model.username){
+                            case "-1":
+                                <input class="form-control bg-light" type="text" placeholder="Username" name="names">
+                            break;
+
+                            case "0":
+                                <input class="form-control bg-light is-invalid" type="text" placeholder="Username" name="names">
+                            break;
+
+                            case "1":
+                                <input class="form-control bg-light is-valid" type="text" placeholder="Username" name="names">
+                            break;
+                        }
+                        
                     </div>
                     <div class="input-group mt-1">
                         <div class="input-group-text bg-info">
                             <img src="/img/password-icon.svg" alt="password-icon" style="height: 1rem">
                         </div>
-                        <input class="form-control bg-light" type="password" placeholder="Password" name="passwords">
+
+                        @switch(Model.password){
+                            case "-1":
+                                <input class="form-control bg-light" type="password" placeholder="Password" name="passwords">
+                            break;
+
+                            case "0":
+                                <input class="form-control bg-light is-invalid" type="password" placeholder="Password" name="passwords">
+                            break;
+
+                            case "1":
+                                <input class="form-control bg-light is-valid" type="password" placeholder="Password" name="passwords">
+                            break;
+                        }
                     </div>
                     <div>
-                        <p>@ViewBag.Error</p>
                     </div>
                     <div class="d-flex justify-content-around mt-1">
                         <div class="d-flex align-items-center gap-1">

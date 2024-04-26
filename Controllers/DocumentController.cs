@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using misericordia.Models;
+using Misericordia.Models;
 using Misericordia.Data;
 
 namespace misericordia.Controllers
