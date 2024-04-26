@@ -10,5 +10,6 @@ namespace misericordia.Models
         public int EndingAttention { get; set; }
         public DateTime DateAttentionExit { get; set; }
         public DateTime DateAttentionEnter { get; set; }
+        public Status string {get; set;}
     }
 }
