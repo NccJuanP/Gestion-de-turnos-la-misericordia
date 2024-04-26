@@ -1,4 +1,4 @@
--- Active: 1713910552041@@baquazvjeajolsh8tvxo-mysql.services.clever-cloud.com@3306@baquazvjeajolsh8tvxo
+-- Active: 1714161874689@@baquazvjeajolsh8tvxo-mysql.services.clever-cloud.com@3306@baquazvjeajolsh8tvxo
 
 -- Crear la tabla DocumentTypes
 CREATE TABLE DocumentTypes (
@@ -60,6 +60,8 @@ CREATE TABLE Employees (
     Modulo int,
     FOREIGN KEY (DocumentType) REFERENCES DocumentTypes(Id)
 );
+alter table `Employees` add COLUMN Modulo int;
+select * from `Employees`;
 
 -- Crear la tabla Attentions
 CREATE TABLE Attentions (
@@ -83,12 +85,12 @@ INSERT INTO Attentions (AttentionPreference, NumAttention, UserId, EmployeeId, E
 (1, 'IG-500', 3, 3, 1, '2024-04-25 11:30:00', '2024-04-25 11:00:00', 'FINALIZADO');
 
 -- Insertar datos en Employees
-INSERT INTO Employees (DocumentType, DocumentNumber, Firstname, Lastname, Email, Phone) VALUES 
-(1, 10001, 'John', 'Doe', 'john.doe@example.com', '1234567890'),
-(2, 10002, 'Jane', 'Smith', 'jane.smith@example.com', '2345678901'),
-(3, 10003, 'Michael', 'Johnson', 'michael.johnson@example.com', '3456789012'),
-(1, 10004, 'Emily', 'Brown', 'emily.brown@example.com', '4567890123'),
-(2, 10005, 'Daniel', 'Martinez', 'daniel.martinez@example.com', '5678901234');
+INSERT INTO Employees (DocumentType, DocumentNumber, Firstname, Lastname, Email, Phone, Password, Modulo) VALUES 
+(1, 10001, 'John', 'Doe', 'john.doe@example.com', '1234567890', "password1", 1),
+(2, 10002, 'Jane', 'Smith', 'jane.smith@example.com', '2345678901',"password2", 2),
+(3, 10003, 'Michael', 'Johnson', 'michael.johnson@example.com', '3456789012',"password3", 3),
+(1, 10004, 'Emily', 'Brown', 'emily.brown@example.com', '4567890123',"password4", 4),
+(2, 10005, 'Daniel', 'Martinez', 'daniel.martinez@example.com', '5678901234',"password5", 5);
 
 -- Insertar datos en Users
 INSERT INTO Users (DocumentType, DocumentNumber, Firstname, Lastname, Email, Phone) VALUES 
