@@ -76,6 +76,11 @@ CREATE TABLE Attentions (
     FOREIGN KEY (EmployeeId) REFERENCES Employees(Id)
 );
 
+-- Insertar datos en Attentions
+INSERT INTO Attentions (AttentionPreference, NumAttention, UserId, EmployeeId, EndingAttention, DateAttentionExit, DateAttentionEnter, Status) VALUES 
+(1, 'GC-100', 1, 1, 1, '2024-04-25 10:00:00', '2024-04-25 09:30:00', 'ESPERA'),
+(2, 'PF-500', 2, 2, 2, '2024-04-25 11:30:00', '2024-04-25 11:00:00', 'ATENDIENDO'),
+(1, 'IG-500', 3, 3, 1, '2024-04-25 11:30:00', '2024-04-25 11:00:00', 'FINALIZADO');
 
 -- Insertar datos en Employees
 INSERT INTO Employees (DocumentType, DocumentNumber, Firstname, Lastname, Email, Phone) VALUES 
