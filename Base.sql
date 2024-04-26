@@ -76,12 +76,12 @@ CREATE TABLE Attentions (
 
 
 -- Insertar datos en Employees
-INSERT INTO Employees (DocumentType, DocumentNumber, Firstname, Lastname, Email, Phone) VALUES 
-(1, 10001, 'John', 'Doe', 'john.doe@example.com', '1234567890'),
-(2, 10002, 'Jane', 'Smith', 'jane.smith@example.com', '2345678901'),
-(3, 10003, 'Michael', 'Johnson', 'michael.johnson@example.com', '3456789012'),
-(1, 10004, 'Emily', 'Brown', 'emily.brown@example.com', '4567890123'),
-(2, 10005, 'Daniel', 'Martinez', 'daniel.martinez@example.com', '5678901234');
+INSERT INTO Employees (DocumentType, DocumentNumber, Firstname, Lastname, Email, Phone, Password) VALUES 
+(1, 10001, 'John', 'Doe', 'john.doe@example.com', '1234567890', 'password1'),
+(2, 10002, 'Jane', 'Smith', 'jane.smith@example.com', '2345678901', 'password2'),
+(3, 10003, 'Michael', 'Johnson', 'michael.johnson@example.com', '3456789012', 'password3'),
+(1, 10004, 'Emily', 'Brown', 'emily.brown@example.com', '4567890123', 'password4'),
+(2, 10005, 'Daniel', 'Martinez', 'daniel.martinez@example.com', '5678901234', 'password5');
 
 -- Insertar datos en Users
 INSERT INTO Users (DocumentType, DocumentNumber, Firstname, Lastname, Email, Phone) VALUES 
