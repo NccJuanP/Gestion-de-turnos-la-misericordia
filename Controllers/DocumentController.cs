@@ -13,83 +13,97 @@ namespace misericordia.Controllers
         {
             _context = context;
         }
-        string typeOfUser;
-        string typeOfDocument;
-        string EnterId;
-        string typeOfRequest;
-        string typeOfRequestNew;
-
-        public IActionResult UserNew(string btnType)
-        {
-            if (!string.IsNullOrEmpty(btnType))
-            {
-                HttpContext.Session.SetString("userSend", btnType);
-                typeOfUser = HttpContext.Session.GetString("userSend");
-
-            }
-            return View();
-        }
-
-
-        public IActionResult TypeDocument(string typeDocument)
+        public IActionResult UserNew(string userType)
 {
-    if (!string.IsNullOrEmpty(typeDocument))
+    if (!string.IsNullOrEmpty(userType))
     {
-        HttpContext.Session.SetString("userSend", typeDocument);
-        this.typeOfDocument = HttpContext.Session.GetString("userSend");
+        HttpContext.Session.SetString("userType", userType);
+        return RedirectToAction("TypeDocument");
+    }
+    return View();
+}
+
+public IActionResult TypeDocument(string TypeDocument)
+{
+    if (!string.IsNullOrEmpty(TypeDocument))
+    {
+        HttpContext.Session.SetString("typeDocument", TypeDocument);
+        return RedirectToAction("EnterDocument");
     }
     return View();
 }
 
 public async Task<IActionResult> EnterDocument(string enterDocument)
 {
-    if (!string.IsNullOrEmpty(enterDocument))
+       if (!string.IsNullOrEmpty(enterDocument)){
+         HttpContext.Session.SetString("enterDocument", "20001");
+         while (!string.IsNullOrEmpty(enterDocument)){
+             if (string.IsNullOrEmpty(enterDocument))
     {
-        HttpContext.Session.SetString("userSend", enterDocument);
-        this.EnterId = HttpContext.Session.GetString("userSend");
+    string typeOfUser = HttpContext.Session.GetString("userType");
+    string typeOfDocument = HttpContext.Session.GetString("typeDocument");
+    string EnterId = HttpContext.Session.GetString("enterDocument");
 
-        int documentType = int.Parse(this.typeOfDocument);
-        int documentNumber = int.Parse(this.EnterId);
+    int documentType = Convert.ToInt32(typeOfDocument);
+    int documentNumber = Convert.ToInt32(EnterId);
 
-        if(typeOfUser=="2") {
-            var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.DocumentType == documentType && u.DocumentNumber == documentNumber);
-            if(user != null){
-                return RedirectToAction("EnterDocument", "TypeRequestUser"); 
-            }else {
-                return RedirectToAction("ErrorDocument"); 
-            }
-        }else{
-            return RedirectToAction("EnterDocument", "TypeRequestNewUser"); 
+    if (typeOfUser == "2")
+    {
+        var user = await _context.Users
+            .FirstOrDefaultAsync(u => u.DocumentType == documentType && u.DocumentNumber == documentNumber);
+            Console.WriteLine(user.DocumentNumber.ToString());
+        if (user != null)
+        {
+            return RedirectToAction("TypeRequestUser");
         }
+        else
+        {
+            return RedirectToAction("ErrorDocument");
+        }
+    }
+    else
+    {
+        return RedirectToAction("TypeRequestNewUser");
+    } 
+    }
+       }
+         }
+        
+       
+    
+
+    
+    return View();
+}
+
+public IActionResult TypeRequestUser(string typeRequest)
+{
+    if (!string.IsNullOrEmpty(typeRequest))
+    {
+        HttpContext.Session.SetString("typeRequest", typeRequest);
     }
     return View();
 }
-        public IActionResult TypeRequestUser(string typeRequest)
-        {
-            if (!string.IsNullOrEmpty(typeRequest))
-            {
-                HttpContext.Session.SetString("userSend", typeRequest);
-                typeOfRequest = HttpContext.Session.GetString("userSend");
 
-            }
-            return View();
-        }
-        public IActionResult TypeRequestNewUser(string typeRequestNew)
-        {
-            if (!string.IsNullOrEmpty(typeRequestNew))
-            {
-                HttpContext.Session.SetString("userSend", typeRequestNew);
-                typeOfRequestNew = HttpContext.Session.GetString("userSend");
+public IActionResult TypeRequestNewUser(string typeRequestNew)
+{
+    if (!string.IsNullOrEmpty(typeRequestNew))
+    {
+        HttpContext.Session.SetString("typeRequestNew", typeRequestNew);
+    }
+     string typeOfUser = HttpContext.Session.GetString("userType");
+    string typeOfDocument = HttpContext.Session.GetString("typeDocument");
+    string EnterId = HttpContext.Session.GetString("enterDocument");
+    ViewBag.mensaje = typeOfUser;
+    ViewBag.mensaje2 = typeOfDocument;
+    ViewBag.mensaje3 = EnterId;
+    return View();
+}
 
-            }
-            return View();
-        }
 public IActionResult ErrorDocument()
 {
     return View();
 }
-
 
     }
 }

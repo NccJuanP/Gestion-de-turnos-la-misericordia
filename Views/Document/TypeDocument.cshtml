@@ -22,25 +22,23 @@
 
     <h3 class="text-center mb-5">Seleccione su tipo de documento</h3>
 
-  <p>@ViewBag.mensaje</p>
-    <form asp-action="EnterDocument" method="post" class="form">
-
-
+  <h1>@ViewBag.mensaje</h1>
+  <h1>@ViewBag.mensaje2</h1>
+    <form asp-action="TypeDocument" method="post" class="form">
     <div class="group-buttons ">
         <div class="contenedor">
-            <button type="submit" class="btn btn-success" id="btn_1" value="btnType" name="typeDocument"> Cedula</button>
+            <button type="submit" class="btn btn-success" name="typeDocument" value="1"> Cedula</button>
         </div>
         <div class="contenedor">
-            <button type="submit" class="btn btn-success" id="btn_2" value="btnType" name="typeDocument"> Tarjeta de identidad</button>
+            <button type="submit" class="btn btn-success" name="typeDocument" value="2"> Tarjeta de identidad</button>
         </div>
         <div class="contenedor">
-            <button  type="submit" class="btn btn-success" id="btn_3" value="btnType" name="typeDocument">Cedula extrajera</button>
+            <button type="submit" class="btn btn-success" name="typeDocument" value="3">Cedula extrajera</button>
         </div>
         <div class="contenedor">
-            <button type="submit" class="btn btn-success" id="btn_4" value="btnType" name="typeDocument">Carné de Afiliación a la EPS</button>
+            <button type="submit" class="btn btn-success" name="typeDocument" value="4">Carné de Afiliación a la EPS</button>
         </div>
     </div>
-
 </form>
 </body>
 </html>
