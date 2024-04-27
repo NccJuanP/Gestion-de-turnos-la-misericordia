@@ -1,13 +1,17 @@
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 
-namespace TuProyecto.Hubs
+namespace Misericordia.Hubs
 {
     public class ChatHub : Hub
     {
         public async Task EnviarMensaje(string usuario, string mensaje)
         {
             await Clients.All.SendAsync("NuevoMensaje", usuario, mensaje);
+        }
+
+        public async Task Limpiar(int id){
+            await Clients.All.SendAsync("Limpiar", id);
         }
     }
 }

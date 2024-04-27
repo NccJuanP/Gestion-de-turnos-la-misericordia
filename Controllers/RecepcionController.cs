@@ -18,7 +18,7 @@ namespace Misericordia.Controllers{
             
             var otro = from user in _context.Users
             join atention in _context.Attentions on user.Id equals atention.UserId
-            join documents in _context.DocumentTypes on user.DocumentType equals documents.Id select new {solicitud = atention.NumAttention,
+            join documents in _context.DocumentTypes on user.DocumentType equals documents.Id where atention.Status.Equals("ESPERA") select new {solicitud = atention.NumAttention,
             preferencias = atention.AttentionPreference, nombreCompleto = user.Firstname + " " + user.Lastname, tipoDocumento = documents.type,
             numeroDocumento = user.DocumentNumber, entrada = atention.DateAttentionEnter, status = atention.Status, atentionId = atention.Id};
 
@@ -48,22 +48,42 @@ namespace Misericordia.Controllers{
             return RedirectToAction("GestionUsuario");
         }
 
-        public async Task<IActionResult> GestionFinalizar(int userId){
+        public async Task <ActionResult> GestionFinalizar(int userId){
+            using  (var transaction = _context.Database.BeginTransaction())
+        {
+            try
+            {
             var atention = await _context.Attentions.FindAsync(userId);
             atention.Status = "FINALIZADO";
             atention.EmployeeId = (int)HttpContext.Session.GetInt32("EmployeeId");
             atention.DateAttentionExit = DateTime.Now;
             atention.EndingAttention = 2;
             _context.Attentions.Update(atention);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
+
+                // Si todas las operaciones son exitosas, confirma la transacción
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("excepcio: "+ ex.Message);
+                // Si algo sale mal, revierte la transacción
+                transaction.Rollback();
+                // Maneja la excepción
+                return RedirectToAction("Error");
+            }
+        }           
+
+            return RedirectToAction("GestionUsuario");
+
+        }
+         public async Task <IActionResult> MedioUser(){
             
-
-            return RedirectToAction("GestionUsuario", "Recepcion");
-
+            return RedirectToAction("GestionUsuario");
         }
 
         public async Task <IActionResult> Index(){
-
+            var otro = from user in _context.Users select user;
             return View();
         }
 
@@ -71,7 +91,7 @@ namespace Misericordia.Controllers{
             var otro = from user in _context.Users
             join atention in _context.Attentions on user.Id equals atention.UserId
             join employee in _context.Employees on atention.EmployeeId equals employee.Id
-            join documents in _context.DocumentTypes on user.DocumentType equals documents.Id
+            join documents in _context.DocumentTypes on user.DocumentType equals documents.Id where atention.Status.Equals("ATENDIENDO")
             select new {solicitud = atention.NumAttention, modulo = employee.Modulo,
             nombreCompleto = user.Firstname + " " + user.Lastname, documento = documents.type + " " + user.DocumentNumber,
             atentionId = atention.Id, status = atention.Status};

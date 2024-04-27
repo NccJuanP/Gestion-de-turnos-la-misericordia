@@ -1,0 +1,36 @@
+<div id="chat">
+    <input type="text" id="usuario" placeholder="Usuario" />
+    <input type="text" id="mensaje" placeholder="Mensaje" />
+    <button onclick="enviarMensaje()">Enviar</button>
+    <button onclick="Limpiar()">Limpiar</button>
+    <ul id="mensajes"></ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@@microsoft/signalr@5.0.8/dist/browser/signalr.min.js"></script>
+<script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/chatHub")
+        .build();
+
+    connection.on("NuevoMensaje", (usuario, mensaje) => {
+        $('#mensajes').append(`<li><strong>${usuario}:</strong> ${mensaje}</li>`);
+    });
+
+    connection.on("Limpiar", () => {
+        $('#mensajes').empty();
+    });
+
+    connection.start().then(() => {
+        console.log('Conectado al servidor SignalR');
+    }).catch(err => console.error(err.toString()));
+
+    function enviarMensaje() {
+        const usuario = $('#usuario').val();
+        const mensaje = $('#mensaje').val();
+        connection.invoke("EnviarMensaje", usuario, mensaje);
+        $('#mensaje').val('');
+    }
+    function Limpiar(){
+        connection.invoke("Limpiar");
+    }
+</script>

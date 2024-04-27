@@ -1,3 +1,9 @@
+<script>
+    function reload(){
+        location.reload();
+    }
+</script>
+
 @using System.Text.RegularExpressions
 @*Modal de confirmar Finalizar*@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -53,7 +59,7 @@
                 break;
             }
 
-        <tr class="@clase">
+        <tr class="@clase" id="user_@item.atentionId">
             <th scope="row">@item.solicitud</th>
             <td>@item.modulo</td>
             <td>@item.nombreCompleto</td>
@@ -67,3 +73,40 @@
         }
     </tbody>
 </table>
+
+<div id="chat">
+    <input type="text" id="usuario" placeholder="Usuario" />
+    <input type="text" id="mensaje" placeholder="Mensaje" />
+    <button onclick="enviarMensaje()">Enviar</button>
+    <button onclick="Limpir()">Limpiar</button>
+    <ul id="mensajes"></ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@@microsoft/signalr@5.0.8/dist/browser/signalr.min.js"></script>
+<script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/chatHub")
+        .build();
+
+    connection.on("NuevoMensaje", (usuario, mensaje) => {
+        $('#mensajes').append(`<li><strong>${usuario}:</strong> ${mensaje}</li>`);
+    });
+
+    connection.on("Limpiar", (id) => {
+        $('#user_'+id).empty();
+    });
+
+    connection.start().then(() => {
+        console.log('Conectado al servidor SignalR');
+    }).catch(err => console.error(err.toString()));
+
+    function enviarMensaje() {
+        const usuario = $('#usuario').val();
+        const mensaje = $('#mensaje').val();
+        connection.invoke("EnviarMensaje", usuario, mensaje);
+        $('#mensaje').val('');
+    }
+    function Limpiar(id){
+        connection.invoke("Limpiar",id);
+    }
+</script>
