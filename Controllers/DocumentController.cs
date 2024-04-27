@@ -41,6 +41,7 @@ namespace misericordia.Controllers
     return View();
 }
 
+
 public async Task<IActionResult> EnterDocument(string enterDocument)
 {
     if (!string.IsNullOrEmpty(enterDocument))
@@ -90,6 +91,10 @@ public IActionResult ErrorDocument()
     return View();
 }
 
+public IActionResult Gestion()
+{
+    return View();
+}
 
     }
 }

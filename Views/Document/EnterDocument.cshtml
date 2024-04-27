@@ -2,75 +2,85 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/stylesDocument.css" asp-append-version="true" />
     <title>Document</title>
 </head>
+
 <body>
     <div class="main">
-    <div class="main">
-    <div class="container mb-2">
-        <div class="img">
-            <a class="navbar-brand" href="#">
-                <img src="https://static1.squarespace.com/static/5750d1ba2b8dde8ea7454e58/57aa9a018419c2428e61eeff/5a006c50085229970597cf1c/1533612260646/Misericordia+logo+1.jpg?format=1500w"
-                    alt="Misericordia" width="80px" height="56px">
-            </a>
-        </div>
-        <div class="title">
-            <h1 class="text-center">Bienvenido al sistema de turnos</h1>
-        </div>
+        <div class="main2">
+            <div class="container mb-2">
+                <div class="img">
+                    <a class="navbar-brand" href="#">
+                        <img src="https://static1.squarespace.com/static/5750d1ba2b8dde8ea7454e58/57aa9a018419c2428e61eeff/5a006c50085229970597cf1c/1533612260646/Misericordia+logo+1.jpg?format=1500w"
+                            class="mt-2" alt="Misericordia" width="160px" height="112px">
+                    </a>
+                </div>
+                <div class="title">
+                    <h1 class="text-center">Bienvenido al sistema de turnos</h1>
+                    <h3 class="text-center mb-5">Ingrese su documento</h3>
+                </div>
 
+            </div>
+
+
+
+
+            <p>@ViewBag.mensaje</p>
+
+            <form asp-action="EnterDocument" method="post" class="form">
+                <div class="input2">
+
+                    <div class="subscribe form-floating">
+                        <p>Toma tu turno</p>
+                        <input type="text" id="Documento" class="form-control subscribe-input" name="Documento">
+
+                        <br>
+                        <div class="submit-btn">Shift</div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="body">
+                    <div class="display d-block">
+
+                        <div class="btn-group b" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary a" id="btn_7">7</button>
+                            <button type="button" class="btn btn-secondary a" id="btn_8">8</button>
+                            <button type="button" class="btn btn-secondary a" id="btn_9">9</button>
+                        </div>
+                        <div class="btn-group b" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary a" id="btn_4">4</button>
+                            <button type="button" class="btn btn-secondary a" id="btn_5">5</button>
+                            <button type="button" class="btn btn-secondary a" id="btn_6">6</button>
+                        </div>
+                        <div class="btn-group b" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary a" id="btn_1">1</button>
+                            <button type="button" class="btn btn-secondary a" id="btn_2">2</button>
+                            <button type="button" class="btn btn-secondary a" id="btn_3">3</button>
+                        </div>
+                        <div class="btn-group b" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary a" id="btn_Clear">Borrar</button>
+                            <button type="button" class="btn btn-secondary" id="btn_0">0</button>
+                            <button type="submit" class="btn btn-secondary">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
-
-    <h3 class="text-center mb-5">Ingrese su documento</h3>
 
     <p>@ViewBag.mensaje</p>
-    
-    <form asp-action="TypeDocument" method="post" class="form">
-        <div class="form-floating mb-3">
-            <input type="text" id="Documento" class="form-control" name="enterDocument"  placeholder="Identificacion">
-            <label for="Documento">Email address</label>
-        </div>
-
-
-
-<div class="body">
-        <div class="display d-block">
-
-        <div class="btn-group b" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary a" id="btn_7" >7</button>
-            <button type="button" class="btn btn-secondary a" id="btn_8"  >8</button>
-            <button type="button" class="btn btn-secondary a" id="btn_9"  >9</button>
-        </div>
-        <div class="btn-group b" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary a" id="btn_4" >4</button>
-            <button type="button" class="btn btn-secondary a" id="btn_5" >5</button>
-            <button type="button" class="btn btn-secondary a" id="btn_6" >6</button>
-        </div>
-        <div class="btn-group b" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary a" id="btn_1" >1</button>
-            <button type="button" class="btn btn-secondary a" id="btn_2" >2</button>
-            <button type="button" class="btn btn-secondary a" id="btn_3" >3</button>
-        </div>
-        <div class="btn-group b" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary a" id="btn_Clear" >Borrar</button>
-            <button type="button" class="btn btn-secondary" id="btn_0">0</button>
-            <button type="submit" class="btn btn-secondary">OK</button>
-        </div>
-    </div>
-</div>
- </form>
-</div>
-</div>
-
-
-<p>@ViewBag.mensaje</p>
-</body>
-</html>
-
     <footer>
         <script src="~/js/EnterDocument.js" asp-append-version="true"></script>
     </footer>
+</body>
+
+</html>
