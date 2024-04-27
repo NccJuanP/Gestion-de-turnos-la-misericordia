@@ -79,9 +79,6 @@ CREATE TABLE Attentions (
     FOREIGN KEY (UserId) REFERENCES Users(Id),
     FOREIGN KEY (EmployeeId) REFERENCES Employees(Id)
 );
-
-select * from `Attentions`;
-
 -- Insertar datos en Attentions
 INSERT INTO Attentions (AttentionPreference, NumAttention, UserId, EmployeeId, EndingAttention, DateAttentionExit, DateAttentionEnter, Status) VALUES 
 (1, 'GC-100', 1, 1, 1, '2024-04-25 10:00:00', '2024-04-25 09:30:00', 'ESPERA'),

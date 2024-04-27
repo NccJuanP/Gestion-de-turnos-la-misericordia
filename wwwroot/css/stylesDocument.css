@@ -46,3 +46,15 @@
     background-color: rgb(8, 0, 255);
   }
   
+  #flecha {
+    margin-top: 30px;
+    border: 0;
+    background-color: white;
+    padding: 0;
+    height: 50px;
+    width: 50px;
+}
+
+.flecha {
+  height: 100%;
+}
