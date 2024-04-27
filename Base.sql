@@ -1,4 +1,4 @@
--- Active: 1714167488761@@baquazvjeajolsh8tvxo-mysql.services.clever-cloud.com@3306@baquazvjeajolsh8tvxo
+-- Active: 1714175885133@@baquazvjeajolsh8tvxo-mysql.services.clever-cloud.com@3306@baquazvjeajolsh8tvxo
 
 select * from Users;
 
@@ -25,6 +25,8 @@ CREATE TABLE EndingAttentions (
 INSERT INTO EndingAttentions (Finished) VALUES 
 ('Usuario no atendido'),
 ('Usuario atendido');
+
+SELECT * from `EndingAttentions`
 
 -- Crear la tabla AttentionPreferences
 CREATE TABLE AttentionPreferences (
@@ -62,8 +64,6 @@ CREATE TABLE Employees (
     Modulo int,
     FOREIGN KEY (DocumentType) REFERENCES DocumentTypes(Id)
 );
-alter table `Employees` add COLUMN Modulo int;
-select * from Employees;
 
 -- Crear la tabla Attentions
 CREATE TABLE Attentions (
