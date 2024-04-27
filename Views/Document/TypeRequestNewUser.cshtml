@@ -1,37 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/css/stylesDocument.css" asp-append-version="true" />
-    <title>Document</title>
-</head>
-<body>
-    <div class="container mb-2">
-    <div class="img">
-        <a class="navbar-brand" href="#">
-            <img src="https://static1.squarespace.com/static/5750d1ba2b8dde8ea7454e58/57aa9a018419c2428e61eeff/5a006c50085229970597cf1c/1533612260646/Misericordia+logo+1.jpg?format=1500w"
-                alt="Misericordia" width="80px" height="56px">
-        </a>
-    </div>
-    <div class="title">
-        <h1 class="text-center">Bienvenido al sistema de turnos</h1>
-    </div>
-</div>
+<link rel="stylesheet" href="~/css/solicitudNRG.css" />
 
-
-    <h3 class="text-center mb-5">Seleccione su tipo de documento</h3>
-
-  <p>@ViewBag.mensaje</p>
-    <form asp-action="EnterDocument" method="post" class="form">
-
-
-    <div class="group-buttons ">
-        <div class="contenedor">
-            <button type="submit" class="btn btn-success" id="btn_4" value="1" name="typeRequestNew">informacion general</button>
+<div class="container">
+    <img class="saturno" src="https://cdn-icons-png.flaticon.com/512/788/788268.png" alt="">
+    <h1 class="titulo">Bienvenido al sistema de turnos</h1>
+    <h2 class="suptitulo">Seleccione su tipo de solicitud</h2>
+    <div class="row">
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            <div class="card">
+                <form asp-action="EnterDocument" method="post" class="form">
+                <div class="card-body">
+                    <a type="submit" class="btn btn-secondary" id="btn_4" value="1" name="typeRequestNew">Informacion general</a>
+                </div>
+                </form>
+                <a id="flecha" class="btn btn-secondary" asp-action="EnterDocument" asp-controller="Document"><img class="flecha" src="https://cdn-icons-png.flaticon.com/512/1/1453.png" alt=""></a>
+                
+            </div>
         </div>
     </div>
-
-</form>
-</body>
-</html>
+</div>

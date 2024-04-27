@@ -29,8 +29,10 @@ namespace misericordia.Controllers
             }
             return View();
         }
-
-
+public IActionResult TypeDocument(){
+    return View();
+}
+[HttpPost]
         public IActionResult TypeDocument(string typeDocument)
 {
     if (!string.IsNullOrEmpty(typeDocument))
@@ -88,6 +90,10 @@ public async Task<IActionResult> EnterDocument(string enterDocument)
 public IActionResult ErrorDocument()
 {
     return View();
+}
+
+public IActionResult Volber(){
+    return RedirectToAction("EnterDocument");
 }
 
 
