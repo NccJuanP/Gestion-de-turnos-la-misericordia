@@ -36,43 +36,37 @@ public IActionResult TypeDocument(string TypeDocument)
 public async Task<IActionResult> EnterDocument(string enterDocument)
 {
        if (!string.IsNullOrEmpty(enterDocument)){
-         HttpContext.Session.SetString("enterDocument", "20001");
-         while (!string.IsNullOrEmpty(enterDocument)){
-             if (string.IsNullOrEmpty(enterDocument))
-    {
+    enterDocument = enterDocument.Replace(" ", "");
+    HttpContext.Session.SetString("enterDocument", enterDocument);
     string typeOfUser = HttpContext.Session.GetString("userType");
     string typeOfDocument = HttpContext.Session.GetString("typeDocument");
     string EnterId = HttpContext.Session.GetString("enterDocument");
 
     int documentType = Convert.ToInt32(typeOfDocument);
     int documentNumber = Convert.ToInt32(EnterId);
+    
 
     if (typeOfUser == "2")
     {
         var user = await _context.Users
             .FirstOrDefaultAsync(u => u.DocumentType == documentType && u.DocumentNumber == documentNumber);
-            Console.WriteLine(user.DocumentNumber.ToString());
         if (user != null)
         {
+            Console.WriteLine("aqui el usuario existe");
             return RedirectToAction("TypeRequestUser");
         }
         else
         {
+            Console.WriteLine("aqui el usuario no existe");
             return RedirectToAction("ErrorDocument");
         }
     }
     else
     {
+            Console.WriteLine("aqui el usuario no lo tenemos registrado");
         return RedirectToAction("TypeRequestNewUser");
     } 
-    }
-       }
-         }
-        
-       
-    
-
-    
+    }  
     return View();
 }
 
