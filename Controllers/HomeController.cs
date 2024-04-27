@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using misericordia.Models;
+using Misericordia.Models;
 
-namespace misericordia.Controllers;
+namespace Misericordia.Controllers;
 
 public class HomeController : Controller
 {

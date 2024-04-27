@@ -1,4 +1,4 @@
-namespace misericordia.Models
+namespace Misericordia.Models
 {
     public class Employee
     {
@@ -10,5 +10,6 @@ namespace misericordia.Models
     public string Email {get;set;}
     public string Phone {get;set;}
     public int Modulo {get; set;}
+    public string Password {get;set;}
     }
 }

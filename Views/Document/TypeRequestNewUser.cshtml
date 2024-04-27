@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="~/css/solicitudNRG.css" />
+
+<div class="container">
+    <img class="saturno" src="https://cdn-icons-png.flaticon.com/512/788/788268.png" alt="">
+    <h1 class="titulo">Bienvenido al sistema de turnos</h1>
+    <h2 class="suptitulo">Seleccione su tipo de solicitud</h2>
+    <div class="row">
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            <div class="card">
+                <form asp-action="EnterDocument" method="post" class="form">
+                <div class="card-body">
+                    <a type="submit" class="btn btn-secondary" id="btn_4" value="1" name="typeRequestNew">Informacion general</a>
+                </div>
+                </form>
+                <a id="flecha" class="btn btn-secondary" asp-action="EnterDocument" asp-controller="Document"><img class="flecha" src="https://cdn-icons-png.flaticon.com/512/1/1453.png" alt=""></a>
+                
+            </div>
+        </div>
+    </div>
+</div>

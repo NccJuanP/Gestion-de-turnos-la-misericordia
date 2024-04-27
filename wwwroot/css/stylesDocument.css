@@ -1,0 +1,60 @@
+.contenedor .a{
+    width: 100%;
+    color: #ffffff;
+  }
+  
+  .a {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .display {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: black;
+  }
+  
+  .b {
+    display: block;
+  }
+  
+  .btn-group button {
+    border: 1px solid black;
+    width: 80px;
+    height: 80px;
+  }
+  
+  .group-text {
+    position: relative;
+  }
+  
+  .contenedor-input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .body
+  {
+    background-color: rgb(255, 51, 0);
+    padding: 200px;
+  }
+  .main
+  {
+    background-color: rgb(8, 0, 255);
+  }
+  
+  #flecha {
+    margin-top: 30px;
+    border: 0;
+    background-color: white;
+    padding: 0;
+    height: 50px;
+    width: 50px;
+}
+
+.flecha {
+  height: 100%;
+}

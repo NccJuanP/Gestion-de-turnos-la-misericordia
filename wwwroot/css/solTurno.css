@@ -1,0 +1,44 @@
+.container {
+  margin-top: 10%;
+  max-width: 800px;
+  max-height: 1000px;
+  text-align: center;
+}
+
+.titulo {
+  padding: 20px;
+}
+
+.suptitulo {
+  padding: 20px;
+}
+
+.card {
+  border: 0;
+}
+
+.btn {
+  width: 250px;
+}
+
+.card-body {
+  margin-top: 10px;
+}
+
+#flecha {
+    border: 0;
+    background-color: white;
+    padding: 0;
+    height: 50px;
+    width: 50px;
+}
+
+.flecha {
+  height: 100%;
+}
+
+.saturno {
+  float: left;
+  margin-top: 15px;
+  width: 50px;
+}

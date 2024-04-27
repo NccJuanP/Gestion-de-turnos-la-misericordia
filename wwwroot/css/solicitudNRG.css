@@ -1,0 +1,44 @@
+.container {
+    background-color: bisque;
+    border-radius: 5px;
+    margin-top: 10%;
+    max-width: 800px;
+    max-height: 1000px;
+    text-align: center;
+}
+
+.titulo {
+    padding: 20px;
+}
+
+.suptitulo {
+    padding: 20px;
+}
+
+.card {
+    background-color: bisque;
+    border: 0;
+}
+
+#flecha {
+    border: 0;
+    background-color: white;
+    padding: 0;
+    height: 50px;
+    width: 50px;
+}
+
+.card-body {
+    margin-top: 10px;
+}
+
+.flecha {
+    background-color: bisque;
+    height: 100%;
+}
+
+.saturno {
+    float: left;
+    margin-top: 15px;
+    width: 50px;
+}

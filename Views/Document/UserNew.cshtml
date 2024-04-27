@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/stylesDocument.css" asp-append-version="true" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="container mb-2">
+    <div class="img">
+        <a class="navbar-brand" href="#">
+            <img src="https://static1.squarespace.com/static/5750d1ba2b8dde8ea7454e58/57aa9a018419c2428e61eeff/5a006c50085229970597cf1c/1533612260646/Misericordia+logo+1.jpg?format=1500w"
+                alt="Misericordia" width="80px" height="56px">
+        </a>
+    </div>
+    <div class="title">
+        <h1 class="text-center">Bienvenido al sistema de turnos</h1>
+    </div>
+</div>
+
+    <h1 class="text-center mb-5">Bienvenido a al sitema de salud de la misericordia</h1>
+
+    <h3 class="text-center mb-5">Que tipo de usuario eres</h3>
+
+  <p>@ViewBag.mensaje</p>
+    <form asp-action="EnterDocument" method="post" class="form">
+
+
+    <div class="group-buttons ">
+        <div class="contenedor">
+            <button type="submit" class="btn btn-success" id="btn_1" name="btnUser" value="1"> usuario nuevo</button>
+        </div>
+        <div class="contenedor">
+            <button type="submit" class="btn btn-success" id="btn_2" name="btnUser" value="2"> Usuario cotizanote</button>
+        </div>
+       
+    </div>
+
+</form>
+</body>
+</html>
+
