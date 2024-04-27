@@ -1,5 +1,7 @@
 using System.Reflection.Metadata;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using System.Threading.Tasks;
 using Misericordia.Data;
 using Misericordia.Models;
 
@@ -40,17 +42,32 @@ namespace Misericordia.Controllers{
             atention.Status = "FINALIZADO";
             atention.EmployeeId = (int)HttpContext.Session.GetInt32("EmployeeId");
             atention.DateAttentionExit = DateTime.Now;
+            atention.EndingAttention = 1;
             _context.Attentions.Update(atention);
             _context.SaveChangesAsync();
             return RedirectToAction("GestionUsuario");
         }
 
+        public async Task<IActionResult> GestionFinalizar(int userId){
+            var atention = await _context.Attentions.FindAsync(userId);
+            atention.Status = "FINALIZADO";
+            atention.EmployeeId = (int)HttpContext.Session.GetInt32("EmployeeId");
+            atention.DateAttentionExit = DateTime.Now;
+            atention.EndingAttention = 2;
+            _context.Attentions.Update(atention);
+            _context.SaveChangesAsync();
+            
+
+            return RedirectToAction("GestionUsuario", "Recepcion");
+
+        }
+
         public async Task <IActionResult> Index(){
-            HttpContext.Session.SetInt32("EmployeeId", 1);
+
             return View();
         }
 
-        public async Task <IActionResult> GestionUsuario(){
+        public async Task<IActionResult> GestionUsuario(){
             var otro = from user in _context.Users
             join atention in _context.Attentions on user.Id equals atention.UserId
             join employee in _context.Employees on atention.EmployeeId equals employee.Id

@@ -1,48 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/css/stylesDocument.css" asp-append-version="true" />
-    <title>Document</title>
-</head>
-<body>
-    <div class="container mb-2">
-    <div class="img">
-        <a class="navbar-brand" href="#">
-            <img src="https://static1.squarespace.com/static/5750d1ba2b8dde8ea7454e58/57aa9a018419c2428e61eeff/5a006c50085229970597cf1c/1533612260646/Misericordia+logo+1.jpg?format=1500w"
-                alt="Misericordia" width="80px" height="56px">
-        </a>
+<link rel="stylesheet" href="~/css/solTurno.css" />
+<form asp-action="EnterDocument" method="post" class="form">
+    <div class="container">
+        <img class="saturno" src="https://cdn-icons-png.flaticon.com/512/788/788268.png" alt="">
+        <h1 class="titulo">Bienvenido al sistema de turnos</h1>
+
+
+        <h2 class="suptitulo">Seleccione su tipo de solicitud</h2>
+
+
+
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <a type="submit" class="btn btn-success" id="btn_1" value="1" name="typeRequest">Gestión de Cita
+                                            Medica</a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <a class="type="submit" class="btn btn-success" id="btn_2" value="2" name="typeRequest">Informacion
+                                            general</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a id="flecha" class="btn btn-secondary" asp-action="Volber" asp-controller="Document"><img
+                            class="flecha" src="https://cdn-icons-png.flaticon.com/512/1/1453.png" alt=""></a>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <a type="submit" class="btn btn-success" id="btn_3" value="3" name="typeRequest">Pago Factura</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <a type="submit" class="btn btn-success" id="btn_4" value="4" name="typeRequest">Autorización de
+                                            medicamentos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </div>
-    <div class="title">
-        <h1 class="text-center">Bienvenido al sistema de turnos</h1>
-    </div>
-</div>
-
-
-    <h3 class="text-center mb-5">Seleccione su tipo de documento</h3>
-
-  <p>@ViewBag.mensaje</p>
-    <form asp-action="EnterDocument" method="post" class="form">
-
-
-    <div class="group-buttons ">
-        <div class="contenedor">
-            <a type="submit" class="btn btn-success" id="btn_1" value="1" name="typeRequest"> citas</a>
-        </div>
-        <div class="contenedor">
-            <a type="submit" class="btn btn-success" id="btn_2" value="2" name="typeRequest"> pagos</a>
-        </div>
-        <div class="contenedor">
-            <a  type="submit" class="btn btn-success" id="btn_3" value="3" name="typeRequest">medicamentos</a>
-        </div>
-        <div class="contenedor">
-            <a type="submit" class="btn btn-success" id="btn_4" value="4" name="typeRequest">informacion general</a>
-        </div>
-    </div>
-
 </form>
-</body>
-</html>
-
-    
