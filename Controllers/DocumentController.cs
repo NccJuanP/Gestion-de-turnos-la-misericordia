@@ -108,5 +108,12 @@ public IActionResult Gestion()
     return View();
 }
 
+
+
+public IActionResult Gestion()
+{
+    return View();
+}
+
     }
 }
