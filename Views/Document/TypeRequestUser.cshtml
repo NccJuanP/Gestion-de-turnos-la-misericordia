@@ -1,61 +1,59 @@
-<link rel="stylesheet" href="~/css/solTurno.css" />
-<form asp-action="EnterDocument" method="post" class="form">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/css/solTurno.css" />
+</head>
+<body>
     <div class="container">
         <img class="saturno" src="https://cdn-icons-png.flaticon.com/512/788/788268.png" alt="">
         <h1 class="titulo">Bienvenido al sistema de turnos</h1>
-
-
         <h2 class="suptitulo">Seleccione su tipo de solicitud</h2>
 
-
-
-        <div class="row">
-            <div class="col-sm-6 mb-3 mb-sm-0">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <a type="submit" class="btn btn-success" id="btn_1" value="1" name="typeRequest">Gestión de Cita
-                                            Medica</a>
-
+        <form asp-action="EnterDocument" method="post" class="form">
+            <div class="row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+<button type="submit" class="btn btn-success" name="typeRequest" value="1" asp-controller="Document" asp-action="Ficho">Gestión de Cita Medica</button>                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-sm-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <a class="type="submit" class="btn btn-success" id="btn_2" value="2" name="typeRequest">Informacion
-                                            general</a>
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <button type="submit" class="btn btn-success" name="typeRequest" value="2" asp-controller="Document" asp-action="Ficho">Informacion general</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a id="flecha" class="btn btn-secondary" asp-action="EnterDocument" asp-controller="Document"><img
-                            class="flecha" src="https://cdn-icons-png.flaticon.com/512/1/1453.png" alt=""></a>
                 </div>
-            </div>
 
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <a type="submit" class="btn btn-success" id="btn_3" value="3" name="typeRequest">Pago Factura</a>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <button type="submit" class="btn btn-success" name="typeRequest" value="3" asp-controller="Document" asp-action="Ficho">Pago Factura</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-sm-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <a type="submit" class="btn btn-success" id="btn_4" value="4" name="typeRequest">Autorización de
-                                            medicamentos</a>
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <button type="submit" class="btn btn-success" name="typeRequest" value="4" asp-controller="Document" asp-action="Ficho">Autorización de medicamentos</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -63,8 +61,11 @@
                     </div>
                 </div>
             </div>
+        </form>
 
-
-        </div>
+        <a id="flecha" class="btn btn-secondary" asp-action="EnterDocument" asp-controller="Document">
+            <img class="flecha" src="https://cdn-icons-png.flaticon.com/512/1/1453.png" alt="">
+        </a>
     </div>
-</form>
+</body>
+</html>
