@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Misericordia.Models;
 using Misericordia.Data;
+using System.Security.Cryptography;
+using System.ComponentModel;
 
 namespace Misericordia.Controllers
 {
@@ -45,7 +47,7 @@ public async Task<IActionResult> EnterDocument(string enterDocument)
     string typeOfUser = HttpContext.Session.GetString("userType");
     string typeOfDocument = HttpContext.Session.GetString("typeDocument");
     string EnterId = HttpContext.Session.GetString("enterDocument");
-
+    
     int documentType = Convert.ToInt32(typeOfDocument);
     int documentNumber = Convert.ToInt32(EnterId);
     
@@ -54,9 +56,11 @@ public async Task<IActionResult> EnterDocument(string enterDocument)
     {
         var user = await _context.Users
             .FirstOrDefaultAsync(u => u.DocumentType == documentType && u.DocumentNumber == documentNumber);
+            
         if (user != null)
         {
             Console.WriteLine("aqui el usuario existe");
+            Console.WriteLine();
             return RedirectToAction("TypeRequestUser");
         }
         else
@@ -79,6 +83,8 @@ public IActionResult TypeRequestUser(string typeRequest)
     if (!string.IsNullOrEmpty(typeRequest))
     {
         HttpContext.Session.SetString("typeRequest", typeRequest);
+      
+             return RedirectToAction("Ficho");
     }
     return View();
 }
@@ -92,9 +98,7 @@ public IActionResult TypeRequestNewUser(string typeRequestNew)
      string typeOfUser = HttpContext.Session.GetString("userType");
     string typeOfDocument = HttpContext.Session.GetString("typeDocument");
     string EnterId = HttpContext.Session.GetString("enterDocument");
-    ViewBag.mensaje = typeOfUser;
-    ViewBag.mensaje2 = typeOfDocument;
-    ViewBag.mensaje3 = EnterId;
+
     return View();
 }
 
@@ -108,10 +112,20 @@ public IActionResult Gestion()
     return View();
 }
 
-
-
-public IActionResult Gestion()
+public IActionResult Ficho()
 {
+    string typeOfRequest = HttpContext.Session.GetString("typeRequest");
+      if (typeOfRequest == "1"){
+            typeOfRequest="GC";
+        }else if (typeOfRequest == "2"){
+             typeOfRequest="IF";
+        }else if (typeOfRequest == "3"){
+             typeOfRequest="PF";
+        }else if (typeOfRequest == "4"){
+             typeOfRequest="AM";
+        }
+        ViewBag.typeOfRequest = typeOfRequest;
+
     return View();
 }
 
