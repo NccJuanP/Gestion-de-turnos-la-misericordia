@@ -3,11 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using Misericordia.Models;
 using Misericordia.Data;
 
-namespace misericordia.Controllers
+namespace Misericordia.Controllers
 {
     public class DocumentController : Controller
     {
-
+        internal class login{
+        public string username { get; set; }
+        public string password { get; set; }
+    }
         public readonly MisericordiaContext _context;
         public DocumentController(MisericordiaContext context)
         {
