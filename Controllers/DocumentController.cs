@@ -4,6 +4,7 @@ using Misericordia.Models;
 using Misericordia.Data;
 using System.Security.Cryptography;
 using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace Misericordia.Controllers
 {
@@ -18,6 +19,17 @@ namespace Misericordia.Controllers
         {
             _context = context;
         }
+
+        public IActionResult PriorityUser(string priority)
+{
+    if (!string.IsNullOrEmpty(priority))
+    {
+        HttpContext.Session.SetString("priority", priority);
+        return RedirectToAction("UserNew");
+    }
+    return View();
+}
+
         public IActionResult UserNew(string userType)
 {
     if (!string.IsNullOrEmpty(userType))
@@ -61,6 +73,8 @@ public async Task<IActionResult> EnterDocument(string enterDocument)
         {
             Console.WriteLine("aqui el usuario existe");
             Console.WriteLine();
+            var userJson = JsonConvert.SerializeObject(user);
+        HttpContext.Session.SetString("user", userJson);
             return RedirectToAction("TypeRequestUser");
         }
         else
@@ -81,6 +95,7 @@ public async Task<IActionResult> EnterDocument(string enterDocument)
 public IActionResult TypeRequestUser(string typeRequest)
 {
     if (!string.IsNullOrEmpty(typeRequest))
+    
     {
         HttpContext.Session.SetString("typeRequest", typeRequest);
       
@@ -112,21 +127,35 @@ public IActionResult Gestion()
     return View();
 }
 
-public IActionResult Ficho()
+public async Task<IActionResult> Ficho(int? id)
 {
-    string typeOfRequest = HttpContext.Session.GetString("typeRequest");
-      if (typeOfRequest == "1"){
-            typeOfRequest="GC";
-        }else if (typeOfRequest == "2"){
-             typeOfRequest="IF";
-        }else if (typeOfRequest == "3"){
-             typeOfRequest="PF";
-        }else if (typeOfRequest == "4"){
-             typeOfRequest="AM";
-        }
-        ViewBag.typeOfRequest = typeOfRequest;
+      string typeOfRequest = HttpContext.Session.GetString("typeRequest");
+    if (typeOfRequest == "1"){
+        ViewBag.typeOfRequest = "GC";
+    }else if (typeOfRequest == "2"){
+        ViewBag.typeOfRequest = "IF";
+    }else if (typeOfRequest == "3"){
+        ViewBag.typeOfRequest = "PF";
+    }else if (typeOfRequest == "4"){
+        ViewBag.typeOfRequest = "AM";
+    }
 
-    return View();
+    string typeOfDocument = HttpContext.Session.GetString("typeDocument");
+
+    if (typeOfDocument == "1"){
+        ViewBag.typeOfDocument = "CC";
+    }else if (typeOfDocument == "2"){
+        ViewBag.typeOfDocument = "TI";
+    }else if (typeOfDocument == "3"){
+        ViewBag.typeOfDocument = "CE";
+    }else if (typeOfDocument == "4"){
+        ViewBag.typeOfDocument = "DA";
+    }    
+        
+          var userJson = HttpContext.Session.GetString("user");
+    var user = JsonConvert.DeserializeObject<User>(userJson);
+
+    return View(user);
 }
 
     }
