@@ -105,7 +105,9 @@ public IActionResult ErrorDocument()
 
 public IActionResult Gestion()
 {
-    return View();
+    var turns = from atention in _context.Attentions join
+    employee in _context.Employees on atention.EmployeeId equals employee.Id select new {modulo = employee.Modulo, turno = atention.NumAttention, estado = atention.Status};
+    return View(turns);
 }
 
     }

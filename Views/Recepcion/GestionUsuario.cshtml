@@ -1,5 +1,5 @@
 <script>
-    function reload(){
+    function reload() {
         location.reload();
     }
 </script>
@@ -13,12 +13,14 @@
             </div>
             <div class="modal-body">
                 <br>
-                <center><h5>¿Esta seguro que desea Finalizar con este usuario?</h5></center>
+                <center>
+                    <h5>¿Esta seguro que desea Finalizar con este usuario?</h5>
+                </center>
                 <br>
                 <br>
             </div>
             <div class="modal-footer" id="modalFinalizar">
-                
+
             </div>
         </div>
     </div>
@@ -36,39 +38,42 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var item in Model){
-            if(item.status == "ATENDIENDO"){
-            string clase = "";
-            Regex regex= new Regex("([A-Z]).");
-            string varia = regex.Match(item.solicitud).ToString();
-            switch (varia){
-                case "GC":
-                    clase = "table-primary";
-                    break;
+        @foreach (var item in Model)
+        {
+            if (item.status == "ATENDIENDO")
+            {
+                string clase = "";
+                Regex regex = new Regex("([A-Z]).");
+                string varia = regex.Match(item.solicitud).ToString();
+                switch (varia)
+                {
+                    case "GC":
+                        clase = "table-primary";
+                        break;
 
-                case "PF":
-                clase = "table-success";
-                break;
+                    case "PF":
+                        clase = "table-success";
+                        break;
 
-                case "IG":
-                    clase = "table-danger";
-                    break;
+                    case "IG":
+                        clase = "table-danger";
+                        break;
 
-                case "AM":
-                clase = "table-warning";
-                break;
-            }
+                    case "AM":
+                        clase = "table-warning";
+                        break;
+                }
 
-        <tr class="@clase" id="user_@item.atentionId">
-            <th scope="row">@item.solicitud</th>
-            <td>@item.modulo</td>
-            <td>@item.nombreCompleto</td>
-            <td>@item.documento</td>
-            <td>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal" onclick="userFinish(@item.atentionId)">Finalizar</button>
-            </td>
-        </tr>
+                <tr class="@clase" id="user_@item.atentionId">
+                    <th scope="row">@item.solicitud</th>
+                    <td>@item.modulo</td>
+                    <td>@item.nombreCompleto</td>
+                    <td>@item.documento</td>
+                    <td>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            onclick="userFinish(@item.atentionId,'@item.solicitud')">Finalizar</button>
+                    </td>
+                </tr>
             }
         }
     </tbody>
@@ -80,24 +85,26 @@
         .build();
 
     connection.on("NuevoMensaje", (usuario, mensaje) => {
-        $('#mensajes').append(`<li><strong>${usuario}:</strong> ${mensaje}</li>`);
+        $('#mensajes').append(`<li><strong>${usuario}:</strong> Modulo ${mensaje}</li>`);
     });
 
     connection.on("Limpiar", (id) => {
-        $('#user_'+id).empty();
+        const smsid = id;
+        connection.invoke("Limpiar", smsid);
     });
 
     connection.start().then(() => {
         console.log('Conectado al servidor SignalR');
     }).catch(err => console.error(err.toString()));
 
-    function enviarMensaje() {
-        const usuario = $('#usuario').val();
-        const mensaje = $('#mensaje').val();
+    function enviarMensaje(sms, empleado) {
+        const usuario = sms;
+        const mensaje = empleado;
         connection.invoke("EnviarMensaje", usuario, mensaje);
         $('#mensaje').val('');
     }
-    function Limpiar(id){
-        connection.invoke("Limpiar",id);
+    function Limpiar(id) {
+        connection.invoke("Limpiar", id);
     }
+
 </script>

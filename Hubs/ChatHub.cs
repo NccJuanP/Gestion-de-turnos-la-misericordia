@@ -10,7 +10,8 @@ namespace Misericordia.Hubs
             await Clients.All.SendAsync("NuevoMensaje", usuario, mensaje);
         }
 
-        public async Task Limpiar(int id){
+        public async Task Limpiar(string id)
+        {
             await Clients.All.SendAsync("Limpiar", id);
         }
     }

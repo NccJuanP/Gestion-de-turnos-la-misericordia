@@ -15,7 +15,7 @@
                 <br>
             </div>
             <div class="modal-footer" id="modalDelete">
-                
+
             </div>
         </div>
     </div>
@@ -61,11 +61,11 @@
             <th scope="col">Acciones</th>
         </tr>
     </thead>
-    <tbody> 
+    <tbody>
         @*tr para usuarios preferenciales hacer que aparezcan de primero sin importar su tiempo de espera*@
         @foreach (var item in Model)
         {
-            if (item.preferencias == 1 && item.status == "ESPERA")
+            if (item.preferencias == 1 && item.status == "LLAMANDO" || item.status == "ESPERA")
             {
                 TimeSpan diferencia = DateTime.Now - item.entrada;
                 int minutos = (int)diferencia.TotalMinutes;
@@ -98,11 +98,12 @@
                     <td>@item.nombreCompleto</td>
                     <td>@item.tipoDocumento @item.numeroDocumento</td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal2">Llamar</button>
-                       <a asp-action="GestionEsperaPasar" asp-route-userId="@item.atentionId" class="btn btn-success">Pasar</a>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal" onclick="userDelete(@item.atentionId)">Borrar</button>
+                        <a asp-action="GestionEsperaLlamar" asp-route-userId="@item.atentionId" type="button"
+                            class="btn btn-primary"
+                            onclick="enviarMensaje('@item.solicitud','@item.empleadollamada')">Llamar</a>
+                        <a asp-action="GestionEsperaPasar" asp-route-userId="@item.atentionId" class="btn btn-success">Pasar</a>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            onclick="userDelete(@item.atentionId,'@item.solicitud')">Borrar</button>
                     </td>
                 </tr>
             }
@@ -110,7 +111,7 @@
 
         @foreach (var item in Model)
         {
-            if (item.preferencias == 2 && item.status == "ESPERA")
+            if (item.preferencias == 2 && item.status == "LLAMANDO" || item.status == "ESPERA")
             {
                 TimeSpan diferencia = DateTime.Now - item.entrada;
                 int minutos = (int)diferencia.TotalMinutes;
@@ -141,11 +142,11 @@
                     <td>@item.nombreCompleto</td>
                     <td>@item.tipoDocumento @item.numeroDocumento</td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal2">Llamar</button>
+                        <button type="button" class="btn btn-primary"
+                            onclick="enviarMensaje('@item.solicitud','@item.empleadollamada')">Llamar</button>
                         <a asp-action="GestionEsperaPasar" asp-route-userId="@item.atentionId" class="btn btn-success">Pasar</a>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal" onclick="userDelete(@item.atentionId)">Borrar</button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            onclick="userDelete(@item.atentionId,'@item.solicitud')">Borrar</button>
                     </td>
                 </tr>
             }
@@ -160,24 +161,26 @@
         .build();
 
     connection.on("NuevoMensaje", (usuario, mensaje) => {
-        $('#mensajes').append(`<li><strong>${usuario}:</strong> ${mensaje}</li>`);
+        $('#mensajes').append(`<li><strong>${usuario}:</strong> Modulo ${mensaje}</li>`);
     });
 
     connection.on("Limpiar", (id) => {
-        $('#user_'+id).empty();
+        const smsid = id;
+        connection.invoke("Limpiar", smsid);
     });
 
     connection.start().then(() => {
         console.log('Conectado al servidor SignalR');
     }).catch(err => console.error(err.toString()));
 
-    function enviarMensaje() {
-        const usuario = $('#usuario').val();
-        const mensaje = $('#mensaje').val();
+    function enviarMensaje(sms, empleado) {
+        const usuario = sms;
+        const mensaje = empleado;
         connection.invoke("EnviarMensaje", usuario, mensaje);
         $('#mensaje').val('');
     }
-    function Limpiar(id){
-        connection.invoke("Limpiar",id);
+    function Limpiar(id) {
+        connection.invoke("Limpiar", id);
     }
+
 </script>

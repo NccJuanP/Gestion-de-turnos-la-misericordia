@@ -8,114 +8,45 @@
 </head>
 
 <body class="Body-gestion ">
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    style="display: block;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Siguiente turno</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="mensajes">
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
   <h1 class="text-center mb-5">Todos Los Turnos</h1>
 
   <div class="container-Gestion row  ">
     <div class="col-md-4 overflow-scroll table-margin" style="max-height: 500px; max-width: 400px;">
       <table class=" table table-striped table-hover table-dark  w-48 h-64 rounded-lg">
         <thead class="z-3">
-          <tr >
+          <tr>
             <th scope="col">Modulo</th>
             <th scope="col">Turno</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>GC-090</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>GC-100</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>GC-110</td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>GC-120</td>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-130</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-140</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-150</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-160</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-170</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-180</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-190</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-200</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-210</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-220</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-230</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-240</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-250</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-260</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-270</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-280</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-290</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-300</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-310</tD>
-          </tr>
-          <tr>
-            <th>8</th>
-            <tD>GC-320</tD>
-          </tr>
+        <tbody id="tbody">
+          @foreach (var item in Model)
+          {
+            if (item.estado == "ATENDIENDO" || item.estado == "LLAMANDO")
+            {
+              <tr id="@item.turno">
+                <th scope="row">@item.modulo</th>
+                <td>@item.turno</td>
+              </tr>
+            }
+          }
+
 
         </tbody>
       </table>
@@ -147,15 +78,71 @@
           </div>
         </div>
       </div>
-
-
-
-
-
     </div>
-
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@@microsoft/signalr@5.0.8/dist/browser/signalr.min.js"></script>
+  <script>
+
+    const connection = new signalR.HubConnectionBuilder()
+      .withUrl("/chatHub")
+      .build();
+
+    connection.on("NuevoMensaje", (usuario, mensaje) => {
+      $('#mensajes').append(`<h4><strong>${usuario}:</strong> modulo: ${mensaje}</h4>`);
+      $('#' + usuario).remove();
+      $('#tbody').append(`
+         <tr id="${usuario}">
+            <th scope="row">${mensaje}</th>
+            <td>${usuario}</td>
+          </tr>`);
+    });
+
+    connection.on("Limpiar", (id) => {
+      $('#' + id).remove();
+    });
+
+    connection.start().then(() => {
+      console.log('Conectado al servidor SignalR');
+    }).catch(err => console.error(err.toString()));
+
+    function enviarMensaje(sms, empleado) {
+      const usuario = sms
+      const mensaje = empleado
+      connection.invoke("EnviarMensaje", usuario, mensaje);
+      verificarContenidoDiv();
+      $('#mensaje').val('');
+    }
+    function Limpiar() {
+      connection.invoke("Limpiar");
+    }
+
+    function reproducirSonido() {
+      var sonido = new Audio('/archivos/notificacion.mp3');
+      sonido.play();
+    }
+
+
+    function verificarContenidoDiv() {
+      var div = document.getElementById('mensajes');
+      let modal = document.getElementById("exampleModal");
+      console.log(div.innerHTML);
+      if (div.innerHTML == '') {
+        modal.style.display = 'none';
+        modal.classList.remove("show");
+      } else {
+        modal.style.display = 'block';
+        modal.classList.add("show");
+        reproducirSonido();
+        setTimeout(function () {
+          div.innerHTML = ''; // Borrar el contenido
+          modal.style.display = 'none'; // Ocultar el div nuevamente
+        }, 4000);
+      }
+    }
+     // Ejecutar la función cada 5 segundos
+    setInterval(verificarContenidoDiv, 5000);
+  </script>
 
 </body>
 

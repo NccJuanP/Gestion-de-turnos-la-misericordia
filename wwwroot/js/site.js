@@ -3,10 +3,10 @@
 
 // Write your JavaScript code.
 
-function userDelete(id){
-    let modal =document.querySelector("#modalDelete");
+function userDelete(id, turno) {
+    let modal = document.querySelector("#modalDelete");
     modal.innerHTML = `
-    <a onclick="Limpiar(5)"   asp-action="GestionEsperaRechazar" href="/Recepcion/GestionEsperaRechazar?userId=${id}" type="button" class="btn btn-success">
+    <a onclick="Limpiar('${turno}')"   asp-action="GestionEsperaRechazar" href="/Recepcion/GestionEsperaRechazar?userId=${id}" type="button" class="btn btn-success">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-check-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
@@ -24,12 +24,12 @@ function userDelete(id){
                 </svg>
                 Cancelar
             </button>`;
-            console.log("ni idea");
+    console.log("ni idea");
 }
 
-function userFinish(id){
+function userFinish(id, turno) {
     let modal = document.getElementById("modalFinalizar");
-    modal.innerHTML = `<a id="sendButton" href="/Recepcion/GestionFinalizar?userId=${id}" type="button" class="btn btn-success" onclick="Limpiar(${id})">
+    modal.innerHTML = `<a onclick="Limpiar('${turno}')" id="sendButton" href="/Recepcion/GestionFinalizar?userId=${id}" type="button" class="btn btn-success" onclick="Limpiar(${id})">
     <svg xmlns="http://www.w3.org/2000/svg" width="16"
         height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
@@ -49,14 +49,10 @@ function userFinish(id){
 </button>`
 }
 
-function reload(){
-    location.reload();
-}
-
 $.ajax({
     url: 'Recepcion/GestionUsuario',
     type: 'GET',
-    success: function(response) {
+    success: function (response) {
         // Actualizar la tabla con los datos recibidos en la respuesta
         $('#tablaUser').html(response);
     }
