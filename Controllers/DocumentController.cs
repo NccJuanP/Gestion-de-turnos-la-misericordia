@@ -119,6 +119,7 @@ public IActionResult TypeRequestUser(string typeRequest)
     {
         HttpContext.Session.SetString("typeRequest", typeRequest);
             TempData["typeRequest"] = typeRequest;
+            
             return RedirectToAction("Ficho");
     }
     return View();
@@ -152,7 +153,11 @@ public IActionResult Gestion()
 [HttpPost]
 public async Task<IActionResult> Ficho(int? id)
 {
-    string typeOfRequest = TempData["typeRequest"] as string;
+       string typeOfRequest = TempData["typeRequest"] as string;
+    if (!string.IsNullOrEmpty(typeOfRequest))
+    {
+        ViewBag.typeOfRequest = typeOfRequest;
+    }
     if (typeOfRequest == "1")
     {
         ViewBag.typeOfRequest = "GC";
