@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/stylesDocument.css" asp-append-version="true" />
     <title>Document</title>
 </head>
@@ -15,16 +23,16 @@
         </a>
     </div>
 
-    <h3 class="text-center mb-5">Que tipo de usuario eres</h3>
+    <h3 class="text-center mb-5">Seleccione su tipo de atencion</h3>
 
 
-<form asp-action="userNew" method="post" class="form">
+<form asp-action="PriorityUser" method="post" class="form">
     <div class="group-buttons ">
         <div class="contenedor">
-            <button type="submit" class="btn btn-success" name="userType" value="1"> usuario nuevo</button>
+            <button type="submit" class="btn btn-success" name="priority" value="1"> Preferencial</button>
         </div>
         <div class="contenedor">
-            <button type="submit" class="btn btn-success" name="userType" value="2"> Usuario cotizanote</button>
+            <button type="submit" class="btn btn-success" name="priority" value="2"> No preferencial</button>
         </div>
     </div>
 </form>
@@ -32,3 +40,6 @@
 </html>
 
 
+
+</body>
+</html>

@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - Gestion_de_turnos_la_misericordia</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Gestion_de_turnos_la_misericordia.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/stylesDocument.css" asp-append-version="true" />
 </head>
 <body>
     
@@ -20,5 +20,8 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/chat.js"></script>
 </body>
 </html>

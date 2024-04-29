@@ -2,12 +2,14 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/stylesDocument.css" asp-append-version="true" />
     <title>Document</title>
 </head>
+
 <body>
     <div class="main">
         <div class="main2">
@@ -30,7 +32,7 @@
 
             <p>@ViewBag.mensaje</p>
 
-            <form asp-action="TypeDocument" method="post" class="form">
+            <form asp-action="EnterDocument" method="post" class="form">
                 <div class="input2">
 
                     <div class="subscribe form-floating">
@@ -65,7 +67,7 @@
                         <div class="btn-group b" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-secondary a" id="btn_Clear">Borrar</button>
                             <button type="button" class="btn btn-secondary" id="btn_0">0</button>
-                            <button type="submit" class="btn btn-secondary">OK</button>
+                            <button type="submit" class="btn btn-secondary" >OK</button>
                         </div>
                     </div>
                 </div>

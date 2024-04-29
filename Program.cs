@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.SignalR;
 using Misericordia.Data;
+using Misericordia.Hubs;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +26,7 @@ builder.Services.AddSignalR();
 
 var app = builder.Build();
 
+app.MapHub<ChatHub>("/chatHub");
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -41,8 +44,10 @@ app.UseAuthorization();
 
 app.UseSession();
 
+app.UseRouting();
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Document}/{action=PriorityUser}/{id?}");
 
 app.Run();
