@@ -1,3 +1,4 @@
+@using Microsoft.AspNetCore.Http
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,16 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body onload="enviarEspera('@ViewBag.preferencia', '@ViewBag.newTurn', '@Model.User.Firstname',  '@ViewBag.typeOfDocument', @Model.User.DocumentNumber)">
     <div class="container">
         <div>
             <h1>Bienvenido a la eps la misericordia @Model.User.Firstname @Model.User.Lastname</h1>
         </div>
         <div>
             <h2>Su turno es: @ViewBag.newTurn</h2>
-            <h2>N° Documento: @ViewBag.typeOfDocument.@Model.User.DocumentNumber</h2>
+            <h2>N° Documento: @ViewBag.typeOfDocument @Model.User.DocumentNumber</h2>
         </div>
     </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/@@microsoft/signalr@5.0.8/dist/browser/signalr.min.js"></script>
+  <script>
+
+    const connection = new signalR.HubConnectionBuilder()
+      .withUrl("/chatHub")
+      .build();
+
+    connection.on("NuevoMensaje", (usuario, mensaje) => {
+      $('#mensajes').append(`<h4><strong>${usuario}:</strong> modulo: ${mensaje}</h4>`);
+      $('#' + usuario).remove();
+      $('#tbody').append(`
+         <tr id="${usuario}">
+            <th scope="row">${mensaje}</th>
+            <td>${usuario}</td>
+          </tr>`);
+    });
+
+    connection.start().then(() => {
+      console.log('Conectado al servidor SignalR');
+    }).catch(err => console.error(err.toString()));
+
+    function enviarMensaje(sms, empleado) {
+      const usuario = sms
+      const mensaje = empleado
+      connection.invoke("EnviarMensaje", usuario, mensaje);
+      verificarContenidoDiv();
+      $('#mensaje').val('');
+    }
+
+
+function enviarEspera(preferencia,  turno, minutos,  nombre,  tipoDocumento,  numDocumento, attentionId, userId) {
+        connection.invoke("ConstruirEspera", preferencia,  turno, minutos,  nombre,  tipoDocumento,  numDocumento, attentionId, @ViewBag.idemployee, userId);
+        $('#mensaje').val('');
+    }
+
+  </script>
+
 </body>
 </html>
 

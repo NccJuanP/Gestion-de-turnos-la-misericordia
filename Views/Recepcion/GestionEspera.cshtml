@@ -61,7 +61,7 @@
             <th scope="col">Acciones</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="tbodyespera">
         @*tr para usuarios preferenciales hacer que aparezcan de primero sin importar su tiempo de espera*@
         @foreach (var item in Model)
         {
@@ -162,6 +162,23 @@
 
     connection.on("NuevoMensaje", (usuario, mensaje) => {
         $('#mensajes').append(`<li><strong>${usuario}:</strong> Modulo ${mensaje}</li>`);
+    });
+
+    connection.on("NuevoEspera", (preferencia,  turno, minutos,  nombre,  tipoDocumento,  numDocumento, attentionId, employeeId, userId) => {
+      $('#' + turno).remove();
+      $('#tbodyespera').append(`<tr class="table-primary" id="${turno}">
+                    <th scope="row">
+                        <p>preferencial</p> ${turno}
+                    </th>
+                    <td>${minutos} MIN</td>
+                    <td>${nombre}</td>
+                    <td>${tipoDocumento} ${numDocumento}</td>
+                    <td>
+                        <a type="button" class="btn btn-primary" onclick="enviarMensaje('${turno}','${employeeId}')" href="/Recepcion/GestionEsperaLlamar?userId=${userId}">Llamar</a>
+                        <a class="btn btn-success" href="/Recepcion/GestionEsperaPasar?userId=${userId}">Pasar</a>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="userDelete(${userId},'${turno}')">Borrar</button>
+                    </td>
+                </tr>`);
     });
 
     connection.on("Limpiar", (id) => {

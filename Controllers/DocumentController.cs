@@ -222,6 +222,7 @@ public async Task<IActionResult> Ficho(string? typeRequest)
 
     newTurn = ViewBag.typeOfRequest + "-" + turno;
     ViewBag.newTurn = newTurn;
+    ViewBag.idemployee = HttpContext.Session.GetInt32("EmployeeId");
     
     var attention = new Attention
     {
@@ -231,6 +232,10 @@ public async Task<IActionResult> Ficho(string? typeRequest)
         AttentionPreference = HttpContext.Session.GetInt32("priority"),
         Status = "ESPERA"
     };
+
+
+    //datos para el agregar a recepcion
+    ViewBag.preferencia = HttpContext.Session.GetInt32("priority");
 
     _context.Attentions.Update(attention);
     await _context.SaveChangesAsync();
