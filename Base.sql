@@ -1,4 +1,4 @@
--- Active: 1714229630210@@baquazvjeajolsh8tvxo-mysql.services.clever-cloud.com@3306@baquazvjeajolsh8tvxo
+-- Active: 1714414021558@@baquazvjeajolsh8tvxo-mysql.services.clever-cloud.com@3306@baquazvjeajolsh8tvxo
 
 -- Crear la tabla DocumentTypes
 CREATE TABLE DocumentTypes (
@@ -77,6 +77,7 @@ CREATE TABLE Attentions (
 );
 
 SELECT * from `Attentions`;
+SELECT * FROM `Users`;
 -- Insertar datos en Attentions
 INSERT INTO Attentions (AttentionPreference, NumAttention, UserId, EmployeeId, EndingAttention, DateAttentionExit, DateAttentionEnter, Status) VALUES 
 (1, 'GC-100', 1, 1, 1, '2024-04-25 10:00:00', '2024-04-25 09:30:00', 'ESPERA'),

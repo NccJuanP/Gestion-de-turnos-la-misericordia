@@ -65,7 +65,7 @@
         @*tr para usuarios preferenciales hacer que aparezcan de primero sin importar su tiempo de espera*@
         @foreach (var item in Model)
         {
-            if (item.preferencias == 1 && item.status == "LLAMANDO" || item.status == "ESPERA")
+            if ((item.status == "LLAMANDO" || item.status == "ESPERA") && item.preferencias == 1)
             {
                 TimeSpan diferencia = DateTime.Now - item.entrada;
                 int minutos = (int)diferencia.TotalMinutes;
@@ -111,7 +111,7 @@
 
         @foreach (var item in Model)
         {
-            if (item.preferencias == 2 && item.status == "LLAMANDO" || item.status == "ESPERA")
+            if ((item.status == "LLAMANDO" || item.status == "ESPERA") && item.preferencias == 2)
             {
                 TimeSpan diferencia = DateTime.Now - item.entrada;
                 int minutos = (int)diferencia.TotalMinutes;

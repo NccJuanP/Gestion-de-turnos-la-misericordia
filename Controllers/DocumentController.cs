@@ -5,6 +5,7 @@ using Misericordia.Data;
 using System.Security.Cryptography;
 using System.ComponentModel;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace Misericordia.Controllers
 {
@@ -27,23 +28,13 @@ public class UserAttentionViewModel
     public User User { get; set; }
     public Attention Attention { get; set; }
 }
-    [HttpPost]
         public async Task<IActionResult> PriorityUser(string priority)
 {
    if (!string.IsNullOrEmpty(priority))
 {
-    HttpContext.Session.SetString("priority", priority);
 
     int priorityOfUser = Convert.ToInt32(priority);
-
-    var attention = new Attention
-    {
-        AttentionPreference = priorityOfUser
-        
-    };
-
-    _context.Attentions.Add(attention);
-    await _context.SaveChangesAsync();
+    HttpContext.Session.SetInt32("priority", priorityOfUser);
 
     return RedirectToAction("UserNew");
 }
@@ -91,15 +82,12 @@ public async Task<IActionResult> EnterDocument(string enterDocument)
             
         if (user != null)
         {
-            Console.WriteLine("aqui el usuario existe");
-            Console.WriteLine();
             var userJson = JsonConvert.SerializeObject(user);
         HttpContext.Session.SetString("user", userJson);
             return RedirectToAction("TypeRequestUser");
         }
         else
         {
-            Console.WriteLine("aqui el usuario no existe");
             return RedirectToAction("ErrorDocument");
         }
     }
@@ -151,28 +139,61 @@ public IActionResult Gestion()
 }
 
 [HttpPost]
-public async Task<IActionResult> Ficho(int? id)
+public async Task<IActionResult> Ficho(string? typeRequest)
 {
-       string typeOfRequest = TempData["typeRequest"] as string;
-    if (!string.IsNullOrEmpty(typeOfRequest))
+    if (!string.IsNullOrEmpty(typeRequest))
     {
-        ViewBag.typeOfRequest = typeOfRequest;
+        ViewBag.typeOfRequest = typeRequest;
     }
-    if (typeOfRequest == "1")
+    var fichos = from consulta in _context.Attentions select consulta;
+    string newTurn = "";
+    int turno = 1;
+    if (typeRequest == "1")
     {
         ViewBag.typeOfRequest = "GC";
+        foreach(var item in fichos){
+        if("GC" == Regex.Match(item.NumAttention, @"\w+").Value){
+
+                int number = int.Parse(Regex.Match(item.NumAttention, @"\d+").Value);
+                turno = number + 1;
+            }
     }
-    else if (typeOfRequest == "2")
+
+    }
+    else if (typeRequest == "2")
     {
         ViewBag.typeOfRequest = "IF";
+        foreach(var item in fichos){
+        if("IF" == Regex.Match(item.NumAttention, @"\w+").Value){
+
+                int number = int.Parse(Regex.Match(item.NumAttention, @"\d+").Value);
+                turno = number + 1;
+            }
     }
-    else if (typeOfRequest == "3")
+    }
+    else if (typeRequest == "3")
     {
         ViewBag.typeOfRequest = "PF";
+        foreach(var item in fichos){
+        if("PF" == Regex.Match(item.NumAttention, @"\w+").Value){
+
+                int number = int.Parse(Regex.Match(item.NumAttention, @"\d+").Value);
+                turno = number + 1;
+            }
     }
-    else if (typeOfRequest == "4")
+
+    }
+    else if (typeRequest == "4")
     {
-        ViewBag.typeOfRequest = "AM";
+        ViewBag.typeRequest = "AM";
+        foreach(var item in fichos){
+
+        if("AM" == Regex.Match(item.NumAttention, @"\w+").Value){
+
+                int number = int.Parse(Regex.Match(item.NumAttention, @"\d+").Value);
+                turno = number + 1;
+            }
+    }
     }
 
     string typeOfDocument = HttpContext.Session.GetString("typeDocument");
@@ -197,14 +218,18 @@ public async Task<IActionResult> Ficho(int? id)
     var userJson = HttpContext.Session.GetString("user");
     var user = JsonConvert.DeserializeObject<User>(userJson);
 
-    contadorUser++;
-    var newTurn = contadorUser.ToString() + "-" + ViewBag.typeOfDocument;
+    
 
+    newTurn = ViewBag.typeOfRequest + "-" + turno;
+    ViewBag.newTurn = newTurn;
+    
     var attention = new Attention
     {
         NumAttention = newTurn,
         UserId = user.Id,
-        DateAttentionEnter = DateTime.Now
+        DateAttentionEnter = DateTime.Now,
+        AttentionPreference = HttpContext.Session.GetInt32("priority"),
+        Status = "ESPERA"
     };
 
     _context.Attentions.Update(attention);
