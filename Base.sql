@@ -1,4 +1,4 @@
--- Active: 1714425502126@@baquazvjeajolsh8tvxo-mysql.services.clever-cloud.com@3306@baquazvjeajolsh8tvxo
+-- Active: 1713910552041@@baquazvjeajolsh8tvxo-mysql.services.clever-cloud.com@3306@baquazvjeajolsh8tvxo
 
 -- Crear la tabla DocumentTypes
 CREATE TABLE DocumentTypes (
@@ -11,8 +11,8 @@ INSERT INTO DocumentTypes (type) VALUES
 ('Cedula'),
 ('Tarjeta de identidad'),
 ('Cedula de extranjeria'),
-('Documento de afiliacion');
-
+('Documento de afiliacion'),
+('No Registra');
 -- Crear la tabla EndingAttentions
 CREATE TABLE EndingAttentions (
     Id INT PRIMARY KEY AUTO_INCREMENT,
@@ -94,6 +94,7 @@ INSERT INTO Employees (DocumentType, DocumentNumber, Firstname, Lastname, Email,
 
 -- Insertar datos en Users
 INSERT INTO Users (DocumentType, DocumentNumber, Firstname, Lastname, Email, Phone) VALUES 
+(5, 0, 'User', 'New', 'NoRegistra', 'NoRegistra'),
 (1, 20001, 'Alice', 'Johnson', 'alice.johnson@example.com', '6789012345'),
 (2, 20002, 'Robert', 'Williams', 'robert.williams@example.com', '7890123456'),
 (1, 20003, 'Samantha', 'Jones', 'samantha.jones@example.com', '8901234567'),
@@ -104,3 +105,4 @@ INSERT INTO Users (DocumentType, DocumentNumber, Firstname, Lastname, Email, Pho
 (3, 20008, 'William', 'Hernandez', 'william.hernandez@example.com', '3456789012'),
 (1, 20009, 'Emma', 'Lopez', 'emma.lopez@example.com', '4567890123'),
 (2, 20010, 'James', 'Gonzalez', 'james.gonzalez@example.com', '5678901234');
+

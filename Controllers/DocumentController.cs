@@ -46,8 +46,10 @@ return View();
     if (!string.IsNullOrEmpty(userType))
     {
         HttpContext.Session.SetString("userType", userType);
-        return RedirectToAction("TypeDocument");
+        return RedirectToAction("TypeDocument"); 
+       
     }
+     var TypeDocumentJson = JsonConvert.SerializeObject(userType);
     return View();
 }
 
@@ -94,7 +96,12 @@ public async Task<IActionResult> EnterDocument(string enterDocument)
     else
     {
             Console.WriteLine("aqui el usuario no lo tenemos registrado");
+            var user = await _context.Users
+            .FirstOrDefaultAsync(u => u.DocumentType == 5 && u.DocumentNumber == 0);
+             var userJson = JsonConvert.SerializeObject(user);
+             HttpContext.Session.SetString("user", userJson);
         return RedirectToAction("TypeRequestNewUser");
+
     } 
     }  
     return View();
@@ -106,7 +113,7 @@ public IActionResult TypeRequestUser(string typeRequest)
     
     {
         HttpContext.Session.SetString("typeRequest", typeRequest);
-            TempData["typeRequest"] = typeRequest;
+            
             
             return RedirectToAction("Ficho");
     }
@@ -117,11 +124,11 @@ public IActionResult TypeRequestNewUser(string typeRequestNew)
 {
     if (!string.IsNullOrEmpty(typeRequestNew))
     {
-        HttpContext.Session.SetString("typeRequestNew", typeRequestNew);
+        HttpContext.Session.SetString("typeRequest", typeRequestNew);
+        
+        return RedirectToAction("Ficho");
     }
-     string typeOfUser = HttpContext.Session.GetString("userType");
-    string typeOfDocument = HttpContext.Session.GetString("typeDocument");
-    string EnterId = HttpContext.Session.GetString("enterDocument");
+   
 
     return View();
 }
@@ -141,6 +148,8 @@ public IActionResult Gestion()
 [HttpPost]
 public async Task<IActionResult> Ficho(string? typeRequest)
 {
+    string typeOfUser = HttpContext.Session.GetString("userType");
+    
     if (!string.IsNullOrEmpty(typeRequest))
     {
         ViewBag.typeOfRequest = typeRequest;
@@ -222,7 +231,7 @@ public async Task<IActionResult> Ficho(string? typeRequest)
 
     newTurn = ViewBag.typeOfRequest + "-" + turno;
     ViewBag.newTurn = newTurn;
-    
+    ViewBag.document= HttpContext.Session.GetString("enterDocument");
     var attention = new Attention
     {
         NumAttention = newTurn,
