@@ -36,11 +36,8 @@
                 <div class="input2">
 
                     <div class="subscribe form-floating">
-                        <p>Toma tu turno</p>
-                        <input type="text" id="Documento" class="form-control" name="enterDocument"  placeholder="Identificacion">
-
-                        <br>
-                        <div class="submit-btn">Shift</div>
+                        <h2 class="text-center ">Toma tu turno</h2>
+                        <input type="text" class="input form-control" id="Documento"  name="enterDocument"  placeholder="Identificacion">
                     </div>
 
                 </div>
@@ -71,10 +68,15 @@
                         </div>
                     </div>
                 </div>
+            <a id="flecha" class="btn btn-secondary" asp-action="TypeDocument" asp-controller="Document">
+                <img class="flecha" src="https://cdn-icons-png.flaticon.com/512/1/1453.png" alt="">
+            </a>
             </form>
         </div>
-    </div>
 
+    </div>
+    
+     
 
     <p>@ViewBag.mensaje</p>
     <footer>
