@@ -196,10 +196,12 @@
 
 .container-Gestion {
   background-color: rgba(218, 223, 215, 0.904);
-  width: 80%;
+  width: 100rem;
   border-radius: 10px;
-  margin-left: 6.5rem;
-
+  margin-top: 2%;
+  margin-left: -10rem;
+  height: 50rem;
+  border: 5px solid white;
 }
 
 .Body-Type-Document {
@@ -215,7 +217,19 @@
 .table-margin {
   margin: 1rem;
 }
+
 /**/
-.z-3{
+.z-3 {
   z-index: 2;
+}
+
+.alerta {
+  width: 36rem;
+  margin-top: 10px;
+}
+
+.card-position {
+  margin-top: 0rem;
+  margin-left: 10rem;
+
 }

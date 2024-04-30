@@ -24,11 +24,13 @@
       </div>
     </div>
   </div>
-  <h1 class="text-center mb-5">Todos Los Turnos</h1>
+
 
   <div class="container-Gestion row  ">
-    <div class="col-md-4 overflow-scroll table-margin" style="max-height: 500px; max-width: 400px;">
-      <table class=" table table-striped table-hover table-dark  w-48 h-64 rounded-lg">
+
+    <h1 class="text-center mb-5">Todos Los Turnos</h1>
+    <div class="col-md-6 overflow-scroll table-margin" style="max-height: 700px; max-width: 600px;">
+      <table class=" table table-bordered  table-hover table-dark  w-48 h-64 rounded-lg border-red">
         <thead class="z-3">
           <tr>
             <th scope="col">Modulo</th>
@@ -41,7 +43,7 @@
             if (item.estado == "ATENDIENDO" || item.estado == "LLAMANDO")
             {
               <tr id="@item.turno">
-                <th scope="row">@item.modulo</th>
+                <td scope="row">@item.modulo</td>
                 <td>@item.turno</td>
               </tr>
             }
@@ -50,34 +52,48 @@
 
         </tbody>
       </table>
+
+
     </div>
-    <div class="col-md-1"></div>
-    <div class="  col-md-4 p-7">
 
-
-      <div class="card text-center ">
-        <div class="card-header">
-          Cuida tu vida
-        </div>
-        <div class="card-body">
-          <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="https://epswater.ie/wp-content/uploads/2020/12/EPS-Site-Logo-01.png" class=" w-75" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="https://epswater.ie/wp-content/uploads/2020/12/EPS-Site-Logo-01.png" class=" w-75" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="https://epswater.ie/wp-content/uploads/2020/12/EPS-Site-Logo-01.png" class="w-75" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="https://epswater.ie/wp-content/uploads/2020/12/EPS-Site-Logo-01.png" class=" w-75" alt="...">
-              </div>
+    <div class="  col-md-6 ">
+      <div class="card card-position" style="width: 38rem; height:40rem;">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://epswater.ie/wp-content/uploads/2020/12/EPS-Site-Logo-01.png" alt="..." width="600rem"
+                height="400rem">
+            </div>
+            <div class="carousel-item">
+              <img src="https://i.insider.com/60f861f50729770012b91ccd?width=1136&format=jpeg" alt="..." width="600rem"
+                height="400rem">
+            </div>
+            <div class="carousel-item">
+              <img src="https://coosalud.com/wp-content/uploads/2019/12/saludvida-a-acoosalud-02.jpg" alt="..."
+                width="600rem" height="400rem">
+            </div>
+            <div class="carousel-item">
+              <img src="https://epswater.ie/wp-content/uploads/2020/12/EPS-Site-Logo-01.png" alt="..." width="900rem"
+                height="400rem">
             </div>
           </div>
         </div>
+        <div class="card-body">
+          <h5 class="card-title text-center">Notificacion</h5>
+
+          <p class="card-text ">Tu turno esta identificado con las letras de tu typo de turno y el numero es el turno.
+          </p>
+          <div class="alert alert-warning alerta text-center" role="alert ">
+            Preferencias a personas discapacitadas,niños o mujeres en embarazo.
+          </div>
+        </div>
       </div>
+
+
+
+
+
+
     </div>
   </div>
 
@@ -140,7 +156,7 @@
         }, 4000);
       }
     }
-     // Ejecutar la función cada 5 segundos
+    // Ejecutar la función cada 5 segundos
     setInterval(verificarContenidoDiv, 5000);
   </script>
 
